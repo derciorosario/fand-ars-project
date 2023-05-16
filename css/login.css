@@ -1,0 +1,190 @@
+@import "main.css";
+
+.container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray-color);
+
+}
+
+.container .content{
+   width: 650px;
+   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+   border-radius: 0.7rem;
+   display: flex;
+   overflow: hidden;
+   height: 500px;
+   background: #fff;
+
+
+}
+.container .content .left-side{
+    width: 50%;
+    height: 100%;
+    background: var(--main-color);
+
+}
+
+.container .content .logo{
+    margin-bottom: 2rem;
+}
+.container .content h2{
+    margin-bottom: 1rem;
+    color: var(--main-color);
+}
+
+
+.container .content .left-side{
+   
+}
+.container .content .left-side .text-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+}
+.container .content .left-side .text-container .top{
+   height: 250px;
+}
+.container .content .left-side .text-container .bottom{
+    text-align: center;
+    padding: 0 1rem;
+}
+.container .content .left-side .text-container .bottom h3{
+    margin-bottom: 0.5rem;
+    font-size: 16px;
+    font-weight: 400;
+}
+.container .content .left-side .text-container .bottom p{
+    margin-bottom: 0.5rem;
+    font-size: 14px;
+    font-weight: 200;
+}
+.container .content form{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 1.8rem;
+}
+.container .content form ._input_div{
+    width: 100%;
+    height: 37px;
+    position: relative;
+    margin-bottom: 0.7rem;
+   
+    
+}
+.container .content form ._input_div input{
+   
+    border: 1px solid #5c5c5c38;
+    border-radius: 0.3rem;
+    width: 100%;
+    background: var(--gray-color);
+    height: 100%;
+    padding-right: 2rem;
+    padding-left: 0.3rem;
+}
+.container .content form ._input_div  span{
+    display: block;
+    position: absolute;
+    left: 0.4rem;
+    color: #5c5c5c;
+    transform: translateY(-50%);
+    top: 50%;
+    font-size: 15px;
+    pointer-events: none;
+    transition: 0.1s ease-out;
+    
+}
+.container .content form ._input_div input:focus{
+    border: 1px solid var(--main-color);
+    background: #fff;
+}
+.container .content form ._input_div input:focus ~ span,
+.container .content form ._input_div span.move
+{
+    top: 0rem;
+    font-size: 12px;
+    transition: 0.1s ease-in;
+    color: var(--main-color);
+    background: #fff;
+}
+
+
+.container .content form ._input_div svg{
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    right: 0.4rem;
+}
+.container .content form ._input_div input:focus ~ svg{
+    fill:  var(--main-color);
+}
+
+.container .content form .options{
+    font-size: 13px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.3rem;
+}
+.container .content form .options label{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.container .content form .options input{
+    margin-right: 0.2rem;
+    cursor: pointer;
+}
+.container .content form .options span.forgot-password a{
+    color: var(--main-color);
+}
+.container .content form .options span.forgot-password a:hover{
+    text-decoration: underline;
+}
+
+
+.container .content form button{
+    width: 100%;
+    height: 38px;
+    background: var(--main-color);
+    color: #fff;
+    border-radius: 0.3rem;
+    font-size: 16px;
+    border: 0;
+    margin-top: 1.5rem;
+    cursor: pointer;
+    border: 1px solid var(--main-color);
+    
+}
+.container .content form button:hover{
+    color: var(--main-color);
+    background: transparent;
+    transition: 0.2s;
+}
+
+.login-error{
+    width: 100%;
+    margin-top: 1rem;
+}
+.login-error{
+    display: flex;
+    align-items: center;
+    color: #d93025;
+}
+.login-error svg{
+    margin-right: 0.3rem;
+}
+
+

@@ -1,0 +1,23 @@
+@import "fonts.css";
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Roboto-Regular;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+:root{
+    --gray-color:#f1faee;
+    --gray-color:#F5F5F5;
+    --main-color:#0072B4;
+    --dark-color:#2E6D8C;
+    --border-color:rgba(207, 205, 205, 0.356);
+}
+
+input,button{
+    outline: none;
+    border: 1px solid #5c5c5c44;
+}
