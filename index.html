@@ -14,36 +14,39 @@
               <div class="left-side">
                   <div class="text-container">
                         <div class="top">
-                              
+                               <img src="img/login/main.png" width="220" style="opacity: 0.5">
                         </div>
-                      <!-- <div class="bottom">
+                      <div class="bottom">
                              <h3>ACCOUTING REALLY SERVICES</h3>
-                             <p>Lorem Ipsum is simply dummy text of.</p>
-                        </div>--> 
+                             <p>&copy; 2023</p>
+                      </div>
                   </div>
               </div>
               <form>
                   <div class="logo"><img width="150" src="img/login/ars-logo-01.png"></div>
                   <h2>Acesso</h2>
                   <div class="_input_div">
-                        <input type="text" name="username">
-                        <span>Nome ou email</span>
+                        <input type="text" name="username" required>
+                        <span>Nome de usuário ou email</span>
                         <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 96 960 960" width="20" fill="#5c5c5c"><path d="M140 896q-24 0-42-18t-18-42V316q0-24 18-42t42-18h680q24 0 42 18t18 42v520q0 24-18 42t-42 18H140Zm340-302L140 371v465h680V371L480 594Zm0-60 336-218H145l335 218ZM140 371v-55 520-465Z"/></svg>
                   </div>
 
                   <div class="_input_div">
-                    <input type="password" name="username">
+                    <input type="password" name="password" required>
                     <span>Senha</span>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" width="22"  fill="#5c5c5c"><path d="M220 976q-24.75 0-42.375-17.625T160 916V482q0-24.75 17.625-42.375T220 422h70v-96q0-78.85 55.606-134.425Q401.212 136 480.106 136T614.5 191.575Q670 247.15 670 326v96h70q24.75 0 42.375 17.625T800 482v434q0 24.75-17.625 42.375T740 976H220Zm0-60h520V482H220v434Zm260.168-140Q512 776 534.5 753.969T557 701q0-30-22.668-54.5t-54.5-24.5Q448 622 425.5 646.5t-22.5 55q0 30.5 22.668 52.5t54.5 22ZM350 422h260v-96q0-54.167-37.882-92.083-37.883-37.917-92-37.917Q426 196 388 233.917 350 271.833 350 326v96ZM220 916V482v434Z"/></svg>
                  </div>
                  <div class="options">
                       <label class="stay-connected" for="stay-on"><input type="checkbox" id="stay-on">Continuar conectado</label>
-                      <span class="forgot-password"><a href="#">Esqueci a senha</a></span>
+                    <!-- <span class="forgot-password"><a href="#">Esqueci a senha</a></span>-->
                  </div>
-                 <button>Entrar</button>
+                 <div class="div_btn">
+                     <button>Entrar</button>
+                     <span class="loader"></span>
+                 </div>
                  <div class="login-error">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960" width="19"><path fill="#d93025" d="M453 776h60V536h-60v240Zm26.982-314q14.018 0 23.518-9.2T513 430q0-14.45-9.482-24.225-9.483-9.775-23.5-9.775-14.018 0-23.518 9.775T447 430q0 13.6 9.482 22.8 9.483 9.2 23.5 9.2Zm.284 514q-82.734 0-155.5-31.5t-127.266-86q-54.5-54.5-86-127.341Q80 658.319 80 575.5q0-82.819 31.5-155.659Q143 347 197.5 293t127.341-85.5Q397.681 176 480.5 176q82.819 0 155.659 31.5Q709 239 763 293t85.5 127Q880 493 880 575.734q0 82.734-31.5 155.5T763 858.316q-54 54.316-127 86Q563 976 480.266 976Z"/></svg>
-                    <span>Usuário ou senha incorrecta</span>
+                    <span></span>
                  </div>
               </form>
          </div>

@@ -18,8 +18,6 @@
    overflow: hidden;
    height: 500px;
    background: #fff;
-
-
 }
 .container .content .left-side{
     width: 50%;
@@ -34,6 +32,7 @@
 .container .content h2{
     margin-bottom: 1rem;
     color: var(--main-color);
+    
 }
 
 
@@ -57,8 +56,8 @@
     padding: 0 1rem;
 }
 .container .content .left-side .text-container .bottom h3{
-    margin-bottom: 0.5rem;
-    font-size: 16px;
+    margin-bottom: 0.8rem;
+    font-size: 18px;
     font-weight: 400;
 }
 .container .content .left-side .text-container .bottom p{
@@ -93,6 +92,15 @@
     padding-right: 2rem;
     padding-left: 0.3rem;
 }
+.container .content form ._input_div input:valid + span,
+.container .content form ._input_div span.move
+{
+    top: 0rem;
+    font-size: 12px;
+    transition: 0.1s ease-in;
+    color: var(--main-color);
+    background: #fff;
+}
 .container .content form ._input_div  span{
     display: block;
     position: absolute;
@@ -109,15 +117,7 @@
     border: 1px solid var(--main-color);
     background: #fff;
 }
-.container .content form ._input_div input:focus ~ span,
-.container .content form ._input_div span.move
-{
-    top: 0rem;
-    font-size: 12px;
-    transition: 0.1s ease-in;
-    color: var(--main-color);
-    background: #fff;
-}
+
 
 
 .container .content form ._input_div svg{
@@ -126,7 +126,9 @@
     top: 50%;
     right: 0.4rem;
 }
-.container .content form ._input_div input:focus ~ svg{
+.container .content form ._input_div input:focus ~ svg,
+.container .content form ._input_div input:valid ~ svg
+{
     fill:  var(--main-color);
 }
 
@@ -154,8 +156,42 @@
     text-decoration: underline;
 }
 
+.container .content form  .div_btn{
+ width: 100%;
+ position: relative;
+ height: 36px;
+ margin-top: 1.5rem;
+}
 
-.container .content form button{
+.container .content form  .div_btn .loader{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 25px;
+	height: 25px;
+	border: 2px solid #ddd;
+    border-top:  2px solid var(--dark-color);
+    border-left:  2px solid var(--dark-color);
+	border-radius: 50%;
+	float: right;
+    animation: login_loader 0.5s linear infinite;
+    opacity: 0;
+    pointer-events: none;
+    
+
+}
+@keyframes login_loader{
+	from{
+         transform:translate(-50%,-50%) rotate(-360deg);
+	}to{
+        transform:translate(-50%,-50%) rotate(0deg);
+	}
+}
+
+
+
+.container .content form .div_btn button{
     width: 100%;
     height: 38px;
     background: var(--main-color);
@@ -163,10 +199,24 @@
     border-radius: 0.3rem;
     font-size: 16px;
     border: 0;
-    margin-top: 1.5rem;
     cursor: pointer;
     border: 1px solid var(--main-color);
     
+}
+.container .content form.loading  .div_btn button{
+    opacity: 0;
+    pointer-events: none;
+}
+.container .content form.loading  .div_btn .loader{
+    opacity: 1;
+}
+
+.container .content form.loading ._input_div input{
+  color: rgba(0, 0,0,0.4);
+  pointer-events: none;
+}
+.container .content form.loading ._input_div span{
+ color: #5c5c5cb6;
 }
 .container .content form button:hover{
     color: var(--main-color);
@@ -177,6 +227,11 @@
 .login-error{
     width: 100%;
     margin-top: 1rem;
+    opacity: 0;
+    pointer-events: none;
+}
+.login-error.show{
+    opacity:1;
 }
 .login-error{
     display: flex;
@@ -186,5 +241,17 @@
 .login-error svg{
     margin-right: 0.3rem;
 }
+
+
+@media (max-width:1024px){
+    .container .content{
+        width: 325px;
+     }
+     .container .content .left-side{
+        display: none;
+     
+     }  
+}
+
 
 
