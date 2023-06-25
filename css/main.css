@@ -3,7 +3,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Roboto-Regular;
+    font-family:'Roboto', sans-serif;
+    scroll-behavior: smooth;
 }
 a{
     text-decoration: none;
@@ -15,6 +16,25 @@ a{
     --main-color:#0072B4;
     --dark-color:#2E6D8C;
     --border-color:rgba(207, 205, 205, 0.356);
+    --bg-color:#F5F5F5;
+    --box-color:#fff;
+    --top-color:#fff;
+    --main-dark-color:#161A1D;
+    --white-color:#fff;
+    --black-color:#000;
+    --main-white-color:#fff;
+}
+:root .dark-theme{
+    --bg-color:#202124;
+    --box-color:#303134;
+    --border-color:rgba(207, 205, 205, 0.116);
+    --top-color:#161A1D;
+    --main-dark-color:#202124;
+    --white-color:#dadce0;
+    --main-white-color:#e3e3e3;
+    --black-color:#dadce0;
+    --dark-color:#0072B4;
+    --gray-color:#f1faee50;
 }
 
 input,button{
