@@ -2646,7 +2646,7 @@ function download_l_file(file_type){
 
 
 
-    fetch('https://ill-rose-piglet-fez.cyclic.app/download-xlsx/', {
+    fetch('https://ill-rose-piglet-fez.cyclic.app/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -2655,7 +2655,7 @@ function download_l_file(file_type){
       })
       .then(response => response.json())
       .then(responseData => {
-           window.location.href='https://ill-rose-piglet-fez.cyclic.app/download-xlsx/'+responseData
+           window.location.href='https://ill-rose-piglet-fez.cyclic.app/'+responseData
       })
       .catch(error => {
         console.log(error);
