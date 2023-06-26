@@ -389,6 +389,7 @@
 }
 
 
+
 .container .pop-ups .c .title{
     display: block;
     width: 100%;
@@ -513,9 +514,46 @@
     font-size: 14px;
     outline: none;
     background: var(--box-color);
+    position: relative;
     
 }
 
+
+.container .pop-ups .c .input_container  select.rate{
+  opacity: 0;
+  pointer-events: none;
+}
+
+.container .pop-ups .c .input_container .load_exchange_rate_div{
+   position: absolute;  
+   width: 23px;
+   height: 23px;
+   top:23px;
+   right: 1rem;
+   border: 2px solid #ddd;
+   border-top:  3px solid var(--dark-color);
+   border-left:  3px solid var(--dark-color);
+   border-radius: 50%;
+   animation: exchange_rate_loader 2s linear infinite;
+}
+.container .pop-ups .c.er-loaded .input_container .load_exchange_rate_div{
+  display: none;
+}
+
+.container .pop-ups .c.er-loaded .input_container  select.rate{
+    opacity: 1;
+    pointer-events: visible;
+}
+
+
+
+@keyframes exchange_rate_loader{
+	from{
+         transform:rotate(-360deg);
+	}to{
+        transform: rotate(0deg);
+	}
+}
 
 
 

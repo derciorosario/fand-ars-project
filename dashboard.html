@@ -240,9 +240,9 @@ l225 288 -68 77 c-262 298 -379 435 -395 463 -67 125 78 274 207 213 25 -12
                           <span>Valor</span>
                           <label>
                             <input type="number" name="valor_deb"/>
-                            <select class="rate">
-                                <option>MZN</option>
-                                <option>USD</option>
+                            <div class="load_exchange_rate_div"></div>
+                            <select class="rate" oninput="convertExchangeToRate(this)">
+                               
                             </select>
                           </label>
                       </div>
@@ -261,9 +261,9 @@ l225 288 -68 77 c-262 298 -379 435 -395 463 -67 125 78 274 207 213 25 -12
                             <span>Valor</span>
                             <label>
                                 <input type="number" name="valor_cred"/>
-                                <select class="rate">
-                                    <option>MZN</option>
-                                    <option>USD</option>
+                                <div class="load_exchange_rate_div"></div>
+                                <select class="rate" oninput="convertExchangeToRate(this)">
+                                  
                                 </select>
                             </label>
                             

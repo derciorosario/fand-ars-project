@@ -2646,16 +2646,18 @@ function download_l_file(file_type){
 
 
 
-    fetch('https://ill-rose-piglet-fez.cyclic.app/', {
+     fetch('https://ars-download-excel.onrender.com/', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*'
         },
         body: JSON.stringify(xlsx_content)
       })
       .then(response => response.json())
       .then(responseData => {
-           window.location.href='https://ill-rose-piglet-fez.cyclic.app/'+responseData
+           window.location.href='https://ars-download-excel.onrender.com/'+responseData
       })
       .catch(error => {
         console.log(error);
@@ -2665,39 +2667,52 @@ function download_l_file(file_type){
 }
 
 
+function convertExchangeToRate(select){
+     let input=select.previousElementSibling.previousElementSibling
+     const value=data.exchange_rates[select.value].filter(e=>e.code==select.getAttribute('current_er'))[0].value
+     input.value=parseFloat(input.value)*value
+     select.setAttribute('current_er',select.value)
+}
 
 
 
 
+//get exchange_rates
 
+function get_exchange_rate_f(){
 
-
-const fromCurrency = 'USD'; // Currency to convert from
-const toCurrency = 'MZN'; // Currency to convert to
-
-// Construct the URL for the currency conversion
-const apiUrl = `https://www.google.com/search?q=${fromCurrency}+to+${toCurrency}`;
-
-// Make a request to fetch the HTML of the currency conversion page
-const f_c=fetch(apiUrl)
-  .then(response => response.text())
-  .then(data => {
-  /*  // Parse the HTML response to extract the exchange rate
-    const regex = /<span class="DFlfde SwHCTb"[^>]*>([^<]+)<\/span>/;
-    const match = data.match(regex);
-
-    if (match && match.length > 1) {
-      const exchangeRate = match[1];
-      console.log(`1 ${fromCurrency} = ${exchangeRate} ${toCurrency}`);
-    } else {
-      console.log('Failed to fetch exchange rate');
-    }*/
-
-    console.log(data)
+  fetch('https://ars-get-exchange-rates.onrender.com/')
+  .then(response => response.json())
+  .then(responseData => {
+        data.exchange_rates=responseData.exchange_rates
+  
+       
+  
+        document.querySelectorAll('.pop-ups .payment_p select.rate').forEach((e)=>{
+               e.setAttribute('current_er',responseData.codes[0])
+               
+               for (let i = 0; i <  responseData.codes.length; i++) {
+                 const selectOption=document.createElement('option')
+                 selectOption.value=responseData.codes[i]
+                 selectOption.textContent=responseData.codes[i]
+                 e.appendChild(selectOption)
+               }
+        })
+  
+         document.querySelector('.pop-ups .payment_p').classList.add('er-loaded')
+  
+  
   })
   .catch(error => {
-    console.error('Error fetching exchange rate:', error);
- });
+      get_exchange_rate_f()
+  });
+  
+
+
+}
+
+
+get_exchange_rate_f()
 
 
 
