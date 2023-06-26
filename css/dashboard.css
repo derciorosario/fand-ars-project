@@ -251,7 +251,11 @@
 }
 
 
-
+.hidden-content{
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+}
 
 .charts .c{
  width: 1024px;
@@ -273,6 +277,10 @@
     pointer-events: visible;
     transition: 0.2s;
     transform: translate(-50%,-50%);
+}
+
+.charts .c.show svg{
+    fill: var(--black-color);
 }
 
 .charts .c .chart-grid{
@@ -637,8 +645,6 @@
     bottom: 0.65rem;
     right: 0.65rem;
     font-size: 12px;
-    /*background-color: rgba(255, 166, 0, 0.404);
-    color: orange;*/
     background-color: rgb(241,243,244);
     padding: 0.2rem;
     opacity: 1;
@@ -895,6 +901,70 @@
 }
 .pop-ups .support-popup-container .go-back svg{
   fill: var(--black-color);
+}
+.container .pop-ups .c.tech-info{
+  width: 400px;
+}
+.container .pop-ups .c.tech-info .info{
+  width: 100%;
+  
+}
+.container .pop-ups .c.tech-info .info .item{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--black-color);
+    margin: 0.4rem 0;
+}
+.container .pop-ups .c.tech-info .info .item svg{
+    fill: var(--black-color);
+    margin-right:  0.5rem;
+    opacity: .7;
+}
+.container .pop-ups .c.tech-info .info .item label{
+    display: flex;
+    align-items: center;
+}
+.container .pop-ups .c.tech-info .info .item span.copy{
+    font-size: 12px;
+    background-color: rgb(241,243,244);
+    padding: 0.7rem;
+    opacity: 1;
+    color: var(--black-color);
+    opacity: .7;
+    border-radius: 0.2rem;
+    cursor: pointer;
+}
+.container.dark-theme .pop-ups .c.tech-info .info .item span.copy{
+    background: rgb(48 51 53)
+}
+.container .pop-ups .c.chose-download-file-format
+ {
+  width: 170px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.container .pop-ups .c.chose-download-file-format::after{
+    width: 2px;
+    height: 100%;
+    background-color: var(--border-color);
+    border-radius: 0.3rem;
+    top: 50%;
+    height: 50%;
+    transform: translate(-50%,-50%);
+    content: "";
+    position: absolute;
+}
+.container .pop-ups .c.chose-download-file-format svg{
+    fill: var(--dark-color);
+    cursor: pointer;
+}
+.container .pop-ups .c.chose-download-file-format svg:hover{
+    opacity: .7;
 }
 
 .main-dashboard  .notification_content{

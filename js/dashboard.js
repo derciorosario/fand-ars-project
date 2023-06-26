@@ -83,9 +83,11 @@ users:[
   }
 ],
 
+country_rates:{
+   MZN:64
+},
 
-
- history:[
+history:[
 /*
       {
         user_id:'1',
@@ -1434,14 +1436,16 @@ function add_l(new_data){
    
     document.querySelector('.payment_print_preview div.data').innerHTML+=`
         <div><span style="font-weight:600"></span><span>${i+1}</span>:</div>
-        <div class="conta"><span style="font-weight:600">Conta: </span><span>${item.conta}</span></div>
-        <div class="valor"><span style="font-weight:600">Valor: </span><span style="color:rgb(66, 169, 209)">${item.full_value}</span></div>
+        <div class="conta"><span style="font-weight:600">Conta Débito: </span><span>${item.conta_deb}</span></div>
+        <div class="conta"><span style="font-weight:600">Conta Crédito: </span><span>${item.conta_cred}</span></div>
+        <div class="valor"><span style="font-weight:600">Valor Débito: </span><span style="color:rgb(66, 169, 209)">${item.deb_full_value}</span></div>
+        <div class="conta"><span style="font-weight:600">Valor Crédito: </span><span style="color:rgb(66, 169, 209)">${item.cred_full_value}</span></div>
         <div class="desc"><span style="font-weight:600">Descrição: </span><span>${item.descricao}</span></div>
         <div class="d_l"><span style="font-weight:600">Data de lançamento: </span><span>${item.data_lancamento}</span></div>
         <div class="_time"><span style="font-weight:600">Data de reflexo: </span><span>${item.data_refelexo}</span></div>
         <div class="hora"><span style="font-weight:600">Hora: </span><span>${item.hora}</span></div>
         <div class="_user"><span style="font-weight:600">Usuário: </span><span>${item.usuario}</span></div>
-        <div><span style="font-weight:600">Estado: </span><span style="color:${0== 0 ? 'orange':'green'}">${0 == 0 ? 'Débito':'Crédito'}</span></div>
+        <div><span style="font-weight:600">Estado:</span><span>${item.status == 0 ? 'Pedente': item.status == 0 ? 'Aprovado' : 'Rejeitado'}</span></div>
         <div style="color:#ddd">____________________________</div>
     `
    
@@ -1520,29 +1524,6 @@ update_painel_l()
 
 
 function add_balanco(new_data){
-
-
-
-  
- /* for (let i = 0; i < data.lancamentos.length; i++) {
-
-    const item=data.lancamentos[i]
-   
-    document.querySelector('.payment_print_preview div.data').innerHTML+=`
-        <div><span style="font-weight:600"></span><span>${i+1}</span>:</div>
-        <div class="conta"><span style="font-weight:600">Conta: </span><span>${item.conta}</span></div>
-        <div class="valor"><span style="font-weight:600">Valor: </span><span style="color:rgb(66, 169, 209)">${item.full_value}</span></div>
-        <div class="desc"><span style="font-weight:600">Descrição: </span><span>${item.descricao}</span></div>
-        <div class="d_l"><span style="font-weight:600">Data de lançamento: </span><span>${item.data_lancamento}</span></div>
-        <div class="_time"><span style="font-weight:600">Data de reflexo: </span><span>${item.data_refelexo}</span></div>
-        <div class="hora"><span style="font-weight:600">Hora: </span><span>${item.hora}</span></div>
-        <div class="_user"><span style="font-weight:600">Usuário: </span><span>${item.usuario}</span></div>
-        <div><span style="font-weight:600">Transição: </span><span style="color:${item.transicao == "debito" ? 'orange':'green'}">${item.transicao == "debito" ? 'Débito':'Crédito'}</span></div>
-        <div style="color:#ddd">____________________________</div>
-    `
-}*/
-
- 
 
 
 
@@ -2459,8 +2440,6 @@ balance_scroll=document.querySelector('.balance ._center').addEventListener('scr
 
 
 
-
-
 function print_l_() {
   var printWindow = window.open('', '', 'width=800,height=800');
   printWindow.document.open();
@@ -2603,6 +2582,7 @@ console.log('There are ' + daysLeft + ' days left until the target date.');
 
 */
 function print_l(){
+  document.querySelector('.pop-ups .chose-download-file-format').classList.remove('show')
   // Create a new jsPDF instance
   var doc = new jsPDF();
 
@@ -2618,6 +2598,71 @@ function print_l(){
 }
 
 
+
+let xlsx_content=Array(data.lancamentos.length + 2)
+function download_l_file(file_type){
+
+          document.querySelector('.pop-ups .chose-download-file-format').classList.remove('show')
+
+         xlsx_content[1]=[
+          'Nº',
+          'Conta crédito',
+          'Conta débito',
+          'Valor crédito',
+          'Valor débito',
+          'Data de lançamento',
+          'Data de reflexo',
+          'Descrição',
+          'Hora',
+          'Natureza de movimento',
+          'Usuário',
+          'Estado'
+        ]
+
+        xlsx_content[0]=[
+          'Total: '+data.lancamentos.length,
+          'Data: '+new Date().getFullYear() + "-" + new Date().getDay() + "-" + new Date().getMonth(),
+          'Hora: '+new Date().getHours()+":"+new Date().getMinutes()+":"+new Date().getSeconds(),
+          'ID: '+Math.random().toString().slice(2,8),
+        ]
+    
+    for (let i = 0; i < data.lancamentos.length; i++) {
+         let row=[]
+         row.push(data.lancamentos[i]['num'])
+         row.push(data.lancamentos[i]['conta_cred'])
+         row.push(data.lancamentos[i]['conta_deb'])
+         row.push(data.lancamentos[i]['cred_full_value'])
+         row.push(data.lancamentos[i]['deb_full_value'])
+         row.push(data.lancamentos[i]['data_lancamento'])
+         row.push(data.lancamentos[i]['data_refelexo'])
+         row.push(data.lancamentos[i]['descricao'])
+         row.push(data.lancamentos[i]['hora'])
+         row.push(data.lancamentos[i]['natureza'])
+         row.push(data.lancamentos[i]['usuario'])
+         row.push(data.lancamentos[i]['status']== 0 ? 'Pendente' : data.lancamentos[i]['status']== 1 ? 'Aprovado' : 'Rejeitado')
+         xlsx_content[i + 2]=row
+      
+    }
+
+
+
+    fetch('https://ill-rose-piglet-fez.cyclic.app/download-xlsx/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(xlsx_content)
+      })
+      .then(response => response.json())
+      .then(responseData => {
+           window.location.href='https://ill-rose-piglet-fez.cyclic.app/download-xlsx/'+responseData
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    
+
+}
 
 
 
@@ -2817,3 +2862,24 @@ function change_company_logo(input){
 
   console.log(input.files)
 }
+
+
+function open_tech_info(){
+    document.querySelector('.notification_content.support').classList.remove('show')
+    setTimeout(()=>document.querySelector('.pop-ups .tech-info').classList.add('show'),100)
+}
+
+
+
+function Clipboard(text){
+  let clipboard=document.querySelector('#copy-to-clipboard')
+  clipboard.value=text
+  clipboard.select()
+  document.execCommand('copy')
+}
+
+function copyTechInfo(text){
+  Clipboard(text)
+  setTimeout(()=>document.querySelector('.pop-ups .tech-info').classList.remove('show'),100)
+}
+

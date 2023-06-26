@@ -7,7 +7,6 @@
     <title>ACCOUTING REALLY SERVICES</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/dashboard.css">
-   
 </head>
 <body>
      <div class="container">
@@ -16,10 +15,12 @@
                <div class="d"><span class="date"></span> | <span class="id"></span></div>
                <div class="t">
                   <span style="color:rgb(225, 209, 65);">Lançamentos: <label style="font-weight: 700;" class="t_n"> 0</label></span>  |
-                  <span style="color:royalblue;">Total: <label style="font-weight: 700;" class="total">0</label> </span>  |
-                  <span style="color:royalblue;">Débito: <label style="font-weight: 700;" class="d_t">0</label> <label class="d_p">0</label></span>  |
-                  <span style="color:royalblue;">Crédito: <label style="font-weight: 700;" class="c_t">0</label> <label class="c_p">0</label> </span>
-
+                  <span style="color:royalblue;">Total: <label style="font-weight: 700;" class="total">0</label> </span> 
+                  <div></div>
+                  <div>
+                    <span style="color:royalblue;">Débito: <label style="font-weight: 700;" class="d_t">0</label> <label class="d_p">0</label></span>  |
+                    <span style="color:royalblue;">Crédito: <label style="font-weight: 700;" class="c_t">0</label> <label class="c_p">0</label> </span>
+                  </div>
                 </div>
                 
                <div class="data"></div>
@@ -51,7 +52,84 @@
 
 
            </div>
-            <div class="pop-ups">
+
+  <div class="hidden-content">
+        <input id="copy-to-clipboard">
+  </div>         
+ <div class="pop-ups">
+
+        <div class="tech-info c float">
+            <span class="title">Informações de Suporte Técnico</span>
+            <div class="top-left-bar">
+             <div class="close-btn" onclick="document.querySelector('.pop-ups .tech-info').classList.remove('show')">
+                 <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 96 960 960" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+             </div> 
+                    
+           </div>
+           <div class="info">
+                  <div class="item">
+                    <label>
+                        <svg class="center_icon" xmlns="http://www.w3.org/2000/svg" width="28" viewBox="0 0 24 24" ><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
+                        <span>suporte.ars@gmail.com</span>
+                    </label>
+                    <span class="copy" onclick="copyTechInfo('suporte.ars@gmail.com')">Copiar</span>
+                  </div>
+                  <div class="item">
+                    <label>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M17.707 12.293a.999.999 0 0 0-1.414 0l-1.594 1.594c-.739-.22-2.118-.72-2.992-1.594s-1.374-2.253-1.594-2.992l1.594-1.594a.999.999 0 0 0 0-1.414l-4-4a.999.999 0 0 0-1.414 0L3.581 5.005c-.38.38-.594.902-.586 1.435.023 1.424.4 6.37 4.298 10.268s8.844 4.274 10.269 4.298h.028c.528 0 1.027-.208 1.405-.586l2.712-2.712a.999.999 0 0 0 0-1.414l-4-4.001zm-.127 6.712c-1.248-.021-5.518-.356-8.873-3.712-3.366-3.366-3.692-7.651-3.712-8.874L7 4.414 9.586 7 8.293 8.293a1 1 0 0 0-.272.912c.024.115.611 2.842 2.271 4.502s4.387 2.247 4.502 2.271a.991.991 0 0 0 .912-.271L17 14.414 19.586 17l-2.006 2.005z"></path></svg>
+                        <span>+258 84854545</span>
+                    </label>
+                    <span class="copy" onclick="copyTechInfo('25884854545')">Copiar</span>
+                  </div>
+           </div>
+        </div>        
+
+
+
+
+ <div class="chose-download-file-format c float">
+<svg onclick="download_l_file('xlsx')" version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="32.000000pt" height="32.000000pt" viewBox="0 0 512.000000 512.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+stroke="none">
+<path d="M1392 4715 c-1404 -265 -1333 -248 -1372 -325 -20 -39 -20 -66 -20
+-1830 0 -1764 0 -1791 20 -1830 39 -77 -35 -60 1394 -328 l1313 -246 47 18
+c28 11 57 32 74 54 l27 35 3 269 3 268 1069 2 c1062 3 1069 3 1096 24 15 11
+37 33 48 48 21 27 21 29 24 1672 2 1818 7 1686 -64 1740 l-37 29 -1069 3
+-1068 2 0 256 c0 217 -3 261 -16 291 -25 51 -76 85 -132 89 -30 2 -503 -83
+-1340 -241z m3408 -2155 l0 -1440 -960 0 -960 0 0 160 0 159 269 3 c254 3 271
+4 297 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -269 3 -268 3 0
+159 0 159 269 3 c254 3 271 4 297 24 44 32 66 68 71 116 7 58 -15 108 -63 144
+l-37 29 -269 3 -268 3 0 159 0 159 269 3 c254 3 271 4 297 24 44 32 66 68 71
+116 7 58 -15 108 -63 144 l-37 29 -269 3 -268 3 0 159 0 159 269 3 c254 3 271
+4 297 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -269 3 -268 3 0
+159 0 160 960 0 960 0 0 -1440z m-2653 944 c70 -34 109 -123 85 -193 -6 -17
+-128 -182 -272 -366 -144 -185 -260 -340 -258 -345 2 -4 116 -137 253 -294
+138 -158 258 -301 268 -319 53 -95 -30 -227 -144 -227 -65 0 -96 28 -340 307
+-132 150 -244 271 -249 268 -5 -3 -101 -124 -213 -268 -113 -145 -217 -271
+-232 -281 -94 -62 -230 4 -242 118 -4 28 0 55 11 77 9 19 118 164 241 323
+l225 288 -68 77 c-262 298 -379 435 -395 463 -67 125 78 274 207 213 25 -12
+103 -94 246 -257 l209 -239 65 83 c477 610 457 588 534 588 19 0 50 -7 69 -16z"/>
+<path d="M3932 3664 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+<path d="M3932 3024 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+<path d="M3932 2384 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+<path d="M3932 1744 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+</g>
+</svg>
+
+<svg onclick="print_l()" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm3.487.012c-.2 0-.33.018-.407.036v2.61c.077.018.201.018.313.018.817.006 1.349-.444 1.349-1.396.006-.83-.479-1.268-1.255-1.268z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"></path></svg>
+
+                </div>
 
 
                 <div class="support-popup-container">
@@ -160,7 +238,13 @@
                       </div>
                       <div class="div_input">
                           <span>Valor</span>
-                          <input type="number" name="valor_deb"/>
+                          <label>
+                            <input type="number" name="valor_deb"/>
+                            <select class="rate">
+                                <option>MZN</option>
+                                <option>USD</option>
+                            </select>
+                          </label>
                       </div>
                       <div class="div_input">
                         <span>Conta</span><span class="float-right cred">Crédito</span>
@@ -175,7 +259,14 @@
                       </div>
                         <div class="div_input">
                             <span>Valor</span>
-                            <input type="number" name="valor_cred"/>
+                            <label>
+                                <input type="number" name="valor_cred"/>
+                                <select class="rate">
+                                    <option>MZN</option>
+                                    <option>USD</option>
+                                </select>
+                            </label>
+                            
                        </div>
                       <div class="div_input">
                         <span>Data de reflexo</span>
@@ -427,7 +518,7 @@
 
 
               <div class="notification_content support float">
-                 <span class="option">Contacto</span>
+                 <span class="option" onclick="open_tech_info()">Contacto</span>
                  <span class="option" onclick="document.querySelector('.pop-ups .support-popup-container').classList.add('show')">Suporte Técnico</span>
               </div>
 
@@ -657,7 +748,7 @@
                                 <div onclick="delete_l()">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                 </div>
-                                <div onclick="print_l()">
+                                <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                 </div>
                             </div>
@@ -765,7 +856,7 @@
                                     </label>
                                 </div>
                              
-                                <div onclick="print_l()">
+                                <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                 </div>
                             </div>
@@ -812,7 +903,7 @@
                             <span class="title">Activos não correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -825,7 +916,7 @@
                             <span class="title">Activos correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -840,7 +931,7 @@
                             <span class="title">Passivos não correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -853,7 +944,7 @@
                             <span class="title">Passivos correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -866,7 +957,7 @@
                             <span class="title">Outros</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -1033,7 +1124,7 @@
                                     <div onclick="delete_user()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                     </div>
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -1071,7 +1162,7 @@
                                             <svg class="show"  xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
                                         </label>
                                     </div>
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -1117,7 +1208,7 @@
                                             <div onclick="delete_a()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                             </div>
-                                            <div onclick="print_l()">
+                                            <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                             </div>
                                         </div>
@@ -1153,7 +1244,7 @@
                                             <div onclick="delete_g()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                             </div>
-                                            <div onclick="print_l()">
+                                            <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                             </div>
                                         </div>
