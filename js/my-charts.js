@@ -383,4 +383,42 @@ function analysis_charts(){
 analysis_charts()
 
 
+let analysis_chart
+
+function set_analysis_chart_a(data,label){
+
+  if(document.querySelector(`.analysis  [p="accounts"] .chart-c .chart`).getAttribute('current_chart')){
+    analysis_chart.data.datasets[0].data = [1200, 34300, 32545, 90349, 50000, 8600,3004, 43400, 43434, 343434, 434342, 65633];
+    analysis_chart.update();
+    return
+  }
+
+    analysis_chart=new Chart(document.querySelector(`.analysis  [p="accounts"] .chart canvas`), {
+      type: 'bar',
+      data: {
+        labels:['7:00', '8:00', '9:00', '10:00', '11:00','12:00','13:00','14:00','15:00','16:00','17:00','18:00','outros'],
+        datasets: [{
+          label,
+          data:[1200, 34300, 32545, 90349, 50000, 8600,3004, 43400, 43434, 343434, 434342, 65633],
+          borderWidth: 1,
+          backgroundColor: '#2e6d8cab',
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+   
+
+}
+
+
+
+
+
 

@@ -7,25 +7,26 @@
     <title>ACCOUTING REALLY SERVICES</title>
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/dashboard.css">
-   
 </head>
-<body> 
+<body>
      <div class="container">
         
         <div class="payment_print_preview" style="display: none;">
                <div class="d"><span class="date"></span> | <span class="id"></span></div>
                <div class="t">
                   <span style="color:rgb(225, 209, 65);">Lançamentos: <label style="font-weight: 700;" class="t_n"> 0</label></span>  |
-                  <span style="color:royalblue;">Total: <label style="font-weight: 700;" class="total">0</label> </span>  |
-                  <span style="color:royalblue;">Débito: <label style="font-weight: 700;" class="d_t">0</label> <label class="d_p">0</label></span>  |
-                  <span style="color:royalblue;">Crédito: <label style="font-weight: 700;" class="c_t">0</label> <label class="c_p">0</label> </span>
-
+                  <span style="color:royalblue;">Total: <label style="font-weight: 700;" class="total">0</label> </span> 
+                  <div></div>
+                  <div>
+                    <span style="color:royalblue;">Débito: <label style="font-weight: 700;" class="d_t">0</label> <label class="d_p">0</label></span>  |
+                    <span style="color:royalblue;">Crédito: <label style="font-weight: 700;" class="c_t">0</label> <label class="c_p">0</label> </span>
+                  </div>
                 </div>
                 
                <div class="data"></div>
                
         </div>
-        <div class="init_loader_container" style="display: none;">
+        <div class="init_loader_container hide" style="display: none;">
                 <div class="init_loader">
                        <!-- <svg>
                                 <circle cx="60" cy="60" r="60"></circle>
@@ -51,7 +52,119 @@
 
 
            </div>
-            <div class="pop-ups">
+
+  <div class="hidden-content">
+        <input id="copy-to-clipboard">
+  </div>         
+ <div class="pop-ups">
+
+        <div class="tech-info c float">
+            <span class="title">Informações de Suporte Técnico</span>
+            <div class="top-left-bar">
+             <div class="close-btn" onclick="document.querySelector('.pop-ups .tech-info').classList.remove('show')">
+                 <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 96 960 960" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+             </div> 
+                    
+           </div>
+           <div class="info">
+                  <div class="item">
+                    <label>
+                        <svg class="center_icon" xmlns="http://www.w3.org/2000/svg" width="28" viewBox="0 0 24 24" ><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
+                        <span>suporte.ars@gmail.com</span>
+                    </label>
+                    <span class="copy" onclick="copyTechInfo('suporte.ars@gmail.com')">Copiar</span>
+                  </div>
+                  <div class="item">
+                    <label>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24"><path d="M17.707 12.293a.999.999 0 0 0-1.414 0l-1.594 1.594c-.739-.22-2.118-.72-2.992-1.594s-1.374-2.253-1.594-2.992l1.594-1.594a.999.999 0 0 0 0-1.414l-4-4a.999.999 0 0 0-1.414 0L3.581 5.005c-.38.38-.594.902-.586 1.435.023 1.424.4 6.37 4.298 10.268s8.844 4.274 10.269 4.298h.028c.528 0 1.027-.208 1.405-.586l2.712-2.712a.999.999 0 0 0 0-1.414l-4-4.001zm-.127 6.712c-1.248-.021-5.518-.356-8.873-3.712-3.366-3.366-3.692-7.651-3.712-8.874L7 4.414 9.586 7 8.293 8.293a1 1 0 0 0-.272.912c.024.115.611 2.842 2.271 4.502s4.387 2.247 4.502 2.271a.991.991 0 0 0 .912-.271L17 14.414 19.586 17l-2.006 2.005z"></path></svg>
+                        <span>+258 84854545</span>
+                    </label>
+                    <span class="copy" onclick="copyTechInfo('25884854545')">Copiar</span>
+                  </div>
+           </div>
+        </div>        
+
+
+
+
+ <div class="chose-download-file-format c float">
+<svg onclick="download_l_file('xlsx')" version="1.0" xmlns="http://www.w3.org/2000/svg"
+ width="32.000000pt" height="32.000000pt" viewBox="0 0 512.000000 512.000000"
+ preserveAspectRatio="xMidYMid meet">
+
+<g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+stroke="none">
+<path d="M1392 4715 c-1404 -265 -1333 -248 -1372 -325 -20 -39 -20 -66 -20
+-1830 0 -1764 0 -1791 20 -1830 39 -77 -35 -60 1394 -328 l1313 -246 47 18
+c28 11 57 32 74 54 l27 35 3 269 3 268 1069 2 c1062 3 1069 3 1096 24 15 11
+37 33 48 48 21 27 21 29 24 1672 2 1818 7 1686 -64 1740 l-37 29 -1069 3
+-1068 2 0 256 c0 217 -3 261 -16 291 -25 51 -76 85 -132 89 -30 2 -503 -83
+-1340 -241z m3408 -2155 l0 -1440 -960 0 -960 0 0 160 0 159 269 3 c254 3 271
+4 297 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -269 3 -268 3 0
+159 0 159 269 3 c254 3 271 4 297 24 44 32 66 68 71 116 7 58 -15 108 -63 144
+l-37 29 -269 3 -268 3 0 159 0 159 269 3 c254 3 271 4 297 24 44 32 66 68 71
+116 7 58 -15 108 -63 144 l-37 29 -269 3 -268 3 0 159 0 159 269 3 c254 3 271
+4 297 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -269 3 -268 3 0
+159 0 160 960 0 960 0 0 -1440z m-2653 944 c70 -34 109 -123 85 -193 -6 -17
+-128 -182 -272 -366 -144 -185 -260 -340 -258 -345 2 -4 116 -137 253 -294
+138 -158 258 -301 268 -319 53 -95 -30 -227 -144 -227 -65 0 -96 28 -340 307
+-132 150 -244 271 -249 268 -5 -3 -101 -124 -213 -268 -113 -145 -217 -271
+-232 -281 -94 -62 -230 4 -242 118 -4 28 0 55 11 77 9 19 118 164 241 323
+l225 288 -68 77 c-262 298 -379 435 -395 463 -67 125 78 274 207 213 25 -12
+103 -94 246 -257 l209 -239 65 83 c477 610 457 588 534 588 19 0 50 -7 69 -16z"/>
+<path d="M3932 3664 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+<path d="M3932 3024 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+<path d="M3932 2384 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+<path d="M3932 1744 c-97 -49 -121 -169 -51 -249 45 -51 78 -57 301 -53 180 3
+199 5 224 24 44 32 66 68 71 116 7 58 -15 108 -63 144 l-37 29 -206 3 c-175 2
+-211 0 -239 -14z"/>
+</g>
+</svg>
+
+<svg onclick="print_l()" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24"><path d="M8.267 14.68c-.184 0-.308.018-.372.036v1.178c.076.018.171.023.302.023.479 0 .774-.242.774-.651 0-.366-.254-.586-.704-.586zm3.487.012c-.2 0-.33.018-.407.036v2.61c.077.018.201.018.313.018.817.006 1.349-.444 1.349-1.396.006-.83-.479-1.268-1.255-1.268z"></path><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM9.498 16.19c-.309.29-.765.42-1.296.42a2.23 2.23 0 0 1-.308-.018v1.426H7v-3.936A7.558 7.558 0 0 1 8.219 14c.557 0 .953.106 1.22.319.254.202.426.533.426.923-.001.392-.131.723-.367.948zm3.807 1.355c-.42.349-1.059.515-1.84.515-.468 0-.799-.03-1.024-.06v-3.917A7.947 7.947 0 0 1 11.66 14c.757 0 1.249.136 1.633.426.415.308.675.799.675 1.504 0 .763-.279 1.29-.663 1.615zM17 14.77h-1.532v.911H16.9v.734h-1.432v1.604h-.906V14.03H17v.74zM14 9h-1V4l5 5h-4z"></path></svg>
+
+                </div>
+
+
+                <div class="support-popup-container">
+                    <div class="go-back" onclick="document.querySelector('.pop-ups .support-popup-container').classList.remove('show')">
+                      
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="22"><path d="M480-160 160-480l320-320 42 42-248 248h526v60H274l248 248-42 42Z"/></svg>
+
+                    </div>
+                    <div class="live-chat-container">
+                          <span class="title">Conectando...</span>
+                          <div class="messages">
+                             
+                          </div>
+                          <div class="send chat">
+                            <input placeholder="Como podemos ajudar?" onkeydown="send_message_oninput(event)">
+                            <button onclick="send_message()">
+                                <svg style="fill: #fff;" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24"><path d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"></path></svg>
+                            </button>
+                          </div>
+                    </div>
+              </div>
+
+              <div class="history_filter c float">
+                   <span class="title">Alterações</span>
+                   <div class="top-left-bar">
+                   
+                    <div class="close-btn" onclick="document.querySelector('.pop-ups .history_filter').classList.remove('show')">
+                        <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 96 960 960" width="20"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg>
+                    </div>        
+                  </div>
+
+                  <div class="l_container">
+                      
+                  </div>
+              </div>
 
 
                 <div class="groups_and_accounts  c float">
@@ -125,30 +238,39 @@
                       </div>
                       <div class="div_input">
                           <span>Valor</span>
-                          <input type="number" name="valor"/>
+                          <label>
+                            <input type="number" name="valor_deb"/>
+                            <div class="load_exchange_rate_div"></div>
+                            <select class="rate valor_deb" oninput="convertExchangeToRate(this)">
+                               
+                            </select>
+                          </label>
                       </div>
                       <div class="div_input">
                         <span>Conta</span><span class="float-right cred">Crédito</span>
                         <input type="text" name="conta_cred" class="account" oninput="filter_payment_a(this.nextElementSibling,this.value)"/>
+
+
                          <div class="option-div">
-                               
+                                 
                          </div> 
+
+
                       </div>
                         <div class="div_input">
                             <span>Valor</span>
-                            <input type="number" name="valor"/>
+                            <label>
+                                <input type="number" name="valor_cred"/>
+                                <div class="load_exchange_rate_div"></div>
+                                <select class="rate valor_cred" oninput="convertExchangeToRate(this)">
+                                  
+                                </select>
+                            </label>
+                            
                        </div>
                       <div class="div_input">
                         <span>Data de reflexo</span>
                         <input type="date" name="data_refelexo"/>
-                      </div>
-                      <div class="div_input" style="display: none;">
-                          <span>Tipo de transição</span>
-                          <select name="transicao">
-                              <option disabled selected value="">Selecione uma opção</option>
-                              <option  value="debito">Débito</option>
-                              <option value="credito">Crédito</option>
-                          </select>
                       </div>
                       <div class="div_input">
                         <span>Natureza do movimento</span>
@@ -194,6 +316,9 @@
                   <div class="options">
                       <button class="cancel" onclick="document.querySelector('.pop-ups .payment_p').classList.remove('show')">Cancelar</button>
                       <button class="save" onclick="add_new_l_f()">Salvar</button>
+                      <button class="edit">Alterar e Aprovar</button>
+                      <button class="reject" onclick="activites_action('reject')">Rejeitar</button>
+                      <button class="accept" onclick="activites_action('accept')">Aprovar</button>
                   </div>
                 </div>
 
@@ -336,7 +461,7 @@
                            
                          </div>
                          <div class="bottom">
-                             <div class="_nav-link" link_page="admin">
+                             <div class="_nav-link" link_page="admin" style="display: none;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="23" viewBox="0 -960 960 960" style="fill: #fff"><path d="M690.882-270q25.883 0 44-19Q753-308 753-333.882q0-25.883-18.118-44-18.117-18.118-44-18.118Q665-396 646-377.882q-19 18.117-19 44Q627-308 646-289q19 19 44.882 19ZM689.5-145q33.5 0 60.5-14t46-40q-26-14-51.962-21-25.961-7-54-7-28.038 0-54.538 7-26.5 7-51.5 21 19 26 45.5 40t60 14ZM480-80q-138-32-229-156.5T160-522v-239l320-120 320 120v270q-14-7-30-12.5t-30-7.5v-208l-260-96-260 96v197q0 76 24.5 140T307-269.5q38 48.5 84 80.5t89 46q6 12 18 27t20 23q-9 5-19 7.5T480-80Zm212.5 0Q615-80 560-135.5T505-267q0-78.435 54.99-133.717Q614.98-456 693-456q77 0 132.5 55.283Q881-345.435 881-267q0 76-55.5 131.5T692.5-80ZM480-479Z"/></svg>
                                 <span langs="pt:Painel de Admin,en:Admin Painel">Painel de Admin</span>
                              </div>
@@ -344,7 +469,7 @@
                                 <svg xmlns="http://www.w3.org/2000/svg" width="21"  viewBox="0 0 24 24" style="fill: #fff"><path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path><path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path></svg>
                                 <span langs="pt:Configurações,en:Settings">Configurações</span>
                              </div>
-                             <div class="logout  _nav-link" onclick="window.location.href='index.html'">
+                             <div class="logout  _nav-link" onclick="logout()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="21"  viewBox="0 0 24 24" style="fill: #fff;"><path d="M16 13v-2H7V8l-5 4 5 4v-3z"></path><path d="M20 3h-9c-1.103 0-2 .897-2 2v4h2V5h9v14h-9v-4H9v4c0 1.103.897 2 2 2h9c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2z"></path></svg>
                                 <span langs="pt:Sair,en:Log out">Sair</span>
                              </div>
@@ -365,13 +490,15 @@
 
 
             <div class="main-dashboard">
+
+
                <div class="notification_content chat float">
                           <div class="chat _c">
                                 <span class="title">Mensagens</span>
                                 <div class="messages">
                                   
                                 </div>
-                                <div class="send">
+                                <div class="send chat">
                                     <input placeholder="Escreva uma mensagem" onkeydown="send_message_oninput(event)">
                                     <button onclick="send_message()">
                                         <svg style="fill: #fff;" xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 24 24"><path d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"></path></svg>
@@ -387,7 +514,17 @@
                             <span class="no_not">Sem nenhuma notificação!</span>
                       </div>
                 </div>
-             </div>
+              </div>
+
+
+              <div class="notification_content support float">
+                 <span class="option" onclick="open_tech_info()">Contacto</span>
+                 <span class="option" onclick="document.querySelector('.pop-ups .support-popup-container').classList.add('show')">Suporte Técnico</span>
+              </div>
+
+
+           
+
 
                <!--Home------------------------------------------>
                <div class="content home" page="home">
@@ -400,8 +537,8 @@
                                </div>
    
                                <div class="icons">
-                                    <label>
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
+                                    <label onclick="setTimeout((e)=>document.querySelector('.notification_content.support').classList.add('show'),100)">
+                                      <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
                                     </label>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.notification').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
@@ -516,9 +653,9 @@
 
    
                                <div class="icons">
-                                    <label>
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
-                                    </label>
+                                <label onclick="setTimeout((e)=>document.querySelector('.notification_content.support').classList.add('show'),100)">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
+                                  </label>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.notification').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                                </div>
@@ -583,9 +720,6 @@
                         </div>
                     </div>-->
                        </div>
-  
- 
-
                     </div>
 
 
@@ -597,6 +731,10 @@
                             <div class="_c">
                                 <div class="item_count">
                                     <span>0</span>
+                                </div>
+                                <div class="refresh">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="21"><path d="M480-160q-133 0-226.5-93.5T160-480q0-133 93.5-226.5T480-800q85 0 149 34.5T740-671v-129h60v254H546v-60h168q-38-60-97-97t-137-37q-109 0-184.5 75.5T220-480q0 109 75.5 184.5T480-220q83 0 152-47.5T728-393h62q-29 105-115 169t-195 64Z"/></svg>
+                                    <div class="loader"></div>
                                 </div>
                                 <div class="search-container">
                                     <input placeholder="pesquise" id="search-payment" oninput="search_l(this.value)"/>
@@ -611,7 +749,7 @@
                                 <div onclick="delete_l()">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                 </div>
-                                <div onclick="print_l()">
+                                <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                 </div>
                             </div>
@@ -643,17 +781,33 @@
                                </div>
    
                                <div class="icons">
-                                    <label>
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
-                                    </label>
+                                <label onclick="setTimeout((e)=>document.querySelector('.notification_content.support').classList.add('show'),100)">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
+                                  </label>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.notification').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                                </div>
                                
                            </div>
                        </div>
-                       <div class="_center">
-                            <div class="analysis_charts">
+
+                       <div class="top_menu _center">
+                          <div class="menu"> 
+                             
+                             <span pag="accounts" class="active">Contas</span>
+                             <span pag="enties">Lançamentos</span>
+                          </div>
+                       </div>
+
+                       
+
+
+                       <div class="enties _bottom" style="display: none;" p="enties">
+                           <!--  <div class="table_options">
+                                <span class="active" o="0" onclick="search_activities(document.querySelector('[p=activities] .search-container input').value,this)">Todas</span>
+                                <span  o="0" onclick="search_activities(document.querySelector('[p=activities] .search-container input').value,this)">Diária</span><span o="1"  onclick="search_activities(document.querySelector('[p=activities] .search-container input').value,this)">Semanal</span><span o="2"  onclick="search_activities(document.querySelector('[p=activities] .search-container input').value,this)">Mensal</span>
+                           </div>-->
+                           <div class="analysis_charts">
                                  <div class="_c"><canvas id="analysis_chart_1"></canvas></div>
                                  <div class="_c"><canvas id="analysis_chart_2"></canvas></div>
                             </div>
@@ -666,8 +820,46 @@
                            <div class="analysis_charts">
                             <div class="_c"><canvas id="analysis_chart_5"></canvas></div>
                             <div class="_c"><canvas id="analysis_chart_6"></canvas></div>
+                           </div>
+                      </div>
+
+                      <div class="accounts _bottom"  p="accounts">
+                             <div class="center_items horizontal_scroll">
+                               
+                            </div>
+
+
+                       <div class="chart-c">
+                                <div class="right-side">
+
+                                    <span class="title">Tendências de contas</span>
+
+                                     <div class="best">
+                                           
+
+                                           
+
+
+                                     </div>
+
+                                     <div class="account-chart">
+                                           <div class="chart" style="height: 300px;">
+                                                <canvas></canvas>
+                                           </div>    
+                                     </div>
+                                </div>
+                                <div class="left-side">
+                                    <span class="title">Accounts</span>
+                                    <div class="search-c">
+                                        <input placeholder="Pesquisar contas" oninput="search_add_stat_accounts_list(this.value)"><svg class="show"  xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
+                                    </div>
+                                    <div class="list">
+                                        
+                                        
+                                    </div>
+                                </div>
                        </div>
-                       </div>
+                      </div>
                 </div>
 
 
@@ -683,9 +875,9 @@
 
    
                                <div class="icons">
-                                    <label>
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
-                                    </label>
+                                <label onclick="setTimeout((e)=>document.querySelector('.notification_content.support').classList.add('show'),100)">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
+                                  </label>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.notification').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                                </div>
@@ -710,7 +902,7 @@
                                     </label>
                                 </div>
                              
-                                <div onclick="print_l()">
+                                <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                 </div>
                             </div>
@@ -742,9 +934,9 @@
                                </div>
    
                                <div class="icons">
-                                    <label>
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
-                                    </label>
+                                <label onclick="setTimeout((e)=>document.querySelector('.notification_content.support').classList.add('show'),100)">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
+                                  </label>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.notification').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                                </div>
@@ -757,7 +949,7 @@
                             <span class="title">Activos não correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -770,7 +962,7 @@
                             <span class="title">Activos correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -785,7 +977,7 @@
                             <span class="title">Passivos não correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -798,7 +990,7 @@
                             <span class="title">Passivos correntes</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -811,7 +1003,7 @@
                             <span class="title">Outros</span>
                             <div class="options">
                                 <div class="_c">
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -878,9 +1070,9 @@
                                </div>
    
                                <div class="icons">
-                                    <label>
-                                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
-                                    </label>
+                                <label onclick="setTimeout((e)=>document.querySelector('.notification_content.support').classList.add('show'),100)">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
+                                  </label>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
                                    <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.notification').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                                </div>
@@ -892,11 +1084,14 @@
                        
 
                        <div class="_center">
-                           <div class="option-c">
+                           <div class="set option-c">
                               <div class="option night-mode">
                                     <div class="title" langs="pt:Modo noturno,en:Night mode">Modo noturno</div>
                                     <div>
-                                        <div onclick="set_f('switch-night-mode')" class="switch"></div>
+                                        <div onclick="set_f('switch-night-mode')" class="switch">
+                                                <svg class="light" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="14"><path d="M479.765-340Q538-340 579-380.765q41-40.764 41-99Q620-538 579.235-579q-40.764-41-99-41Q422-620 381-579.235q-41 40.764-41 99Q340-422 380.765-381q40.764 41 99 41Zm.235 60q-83 0-141.5-58.5T280-480q0-83 58.5-141.5T480-680q83 0 141.5 58.5T680-480q0 83-58.5 141.5T480-280ZM70-450q-12.75 0-21.375-8.675Q40-467.351 40-480.175 40-493 48.625-501.5T70-510h100q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T170-450H70Zm720 0q-12.75 0-21.375-8.675-8.625-8.676-8.625-21.5 0-12.825 8.625-21.325T790-510h100q12.75 0 21.375 8.675 8.625 8.676 8.625 21.5 0 12.825-8.625 21.325T890-450H790ZM479.825-760Q467-760 458.5-768.625T450-790v-100q0-12.75 8.675-21.375 8.676-8.625 21.5-8.625 12.825 0 21.325 8.625T510-890v100q0 12.75-8.675 21.375-8.676 8.625-21.5 8.625Zm0 720Q467-40 458.5-48.625T450-70v-100q0-12.75 8.675-21.375 8.676-8.625 21.5-8.625 12.825 0 21.325 8.625T510-170v100q0 12.75-8.675 21.375Q492.649-40 479.825-40ZM240-678l-57-56q-9-9-8.629-21.603.37-12.604 8.526-21.5 8.896-8.897 21.5-8.897Q217-786 226-777l56 57q8 9 8 21t-8 20.5q-8 8.5-20.5 8.5t-21.5-8Zm494 495-56-57q-8-9-8-21.375T678.5-282q8.5-9 20.5-9t21 9l57 56q9 9 8.629 21.603-.37 12.604-8.526 21.5-8.896 8.897-21.5 8.897Q743-174 734-183Zm-56-495q-9-9-9-21t9-21l56-57q9-9 21.603-8.629 12.604.37 21.5 8.526 8.897 8.896 8.897 21.5Q786-743 777-734l-57 56q-8 8-20.364 8-12.363 0-21.636-8ZM182.897-182.897q-8.897-8.896-8.897-21.5Q174-217 183-226l57-56q8.8-9 20.9-9 12.1 0 20.709 9Q291-273 291-261t-9 21l-56 57q-9 9-21.603 8.629-12.604-.37-21.5-8.526ZM480-480Z"/></svg>
+                                                <svg class="dark" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="14"><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q8 0 17 .5t23 1.5q-36 32-56 79t-20 99q0 90 63 153t153 63q52 0 99-18.5t79-51.5q1 12 1.5 19.5t.5 14.5q0 150-105 255T480-120Z"/></svg>
+                                        </div>
                                     </div>
                               </div>
                               <div class="option lang">
@@ -906,7 +1101,7 @@
                                          <option value="pt">Português</option>
                                       </select>
                                 </div>
-                               </div>
+                          </div>
 
                               
                            </div>
@@ -930,9 +1125,9 @@
                               </div>
   
                               <div class="icons">
-                                   <label>
-                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
-                                   </label>
+                                <label onclick="setTimeout((e)=>document.querySelector('.notification_content.support').classList.add('show'),100)">
+                                    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" width="24" height="24"><path d="M480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm-121-80 63-150q-38-13-67.5-41.5T310-421l-150 60q31 71 82 123t117 78Zm-50-378q16-41 45-70t67-42l-60-150q-75 31-127 83.5T160-598l149 60Zm171 178q50 0 85-35t35-85q0-50-35-85t-85-35q-50 0-85 35t-35 85q0 50 35 85t85 35Zm121 200q69-28 120-79.5T800-359l-150-62q-15 42-44.5 70.5T538-310l63 150Zm49-379 150-62q-28-68-79.5-119.5T601-800l-61 150q38 13 66 41.5t44 69.5Z"/></svg><span langs="pt:Suporte,en:Support">Suporte</span>
+                                  </label>
                                   <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M20 4H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2zm0 2v.511l-8 6.223-8-6.222V6h16zM4 18V9.044l7.386 5.745a.994.994 0 0 0 1.228 0L20 9.044 20.002 18H4z"></path></svg>
                                   <svg onclick="setTimeout((e)=>document.querySelector('.notification_content.notification').classList.add('show'),100)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13.586V10c0-3.217-2.185-5.927-5.145-6.742C13.562 2.52 12.846 2 12 2s-1.562.52-1.855 1.258C7.185 4.074 5 6.783 5 10v3.586l-1.707 1.707A.996.996 0 0 0 3 16v2a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-2a.996.996 0 0 0-.293-.707L19 13.586zM19 17H5v-.586l1.707-1.707A.996.996 0 0 0 7 14v-4c0-2.757 2.243-5 5-5s5 2.243 5 5v4c0 .266.105.52.293.707L19 16.414V17zm-7 5a2.98 2.98 0 0 0 2.818-2H9.182A2.98 2.98 0 0 0 12 22z"></path></svg>
                               </div>
@@ -943,10 +1138,10 @@
 
                       
 
-                      <div class="_center">
+                      <div class="top_menu _center">
                           <div class="menu">
-                             <span class="active" p="main" langs="pt:Visão Geral,en:Overview">Visão Geral</span>
-                             <span p="activities" langs="pt:Actividades,en:Activities">Actividades</span>
+                              <!-- <span class="active" p="main" langs="pt:Visão Geral,en:Overview">Visão Geral</span>-->  
+                             <span class="active" p="activities" langs="pt:Actividades,en:Activities">Actividades</span>
                              <span p="users" langs="pt:Usuários,en:Users">Usuários</span>
                              <span p="accounts_and_groups" langs="pt:Contas e Grupos,en:Accounts and Groups">Contas e Grupos</span>
                              <span p="settings" langs="pt:Configurações Gerais,en:General Settings">Configurações Gerais</span>
@@ -975,7 +1170,7 @@
                                     <div onclick="delete_user()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                     </div>
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -993,10 +1188,13 @@
 
 
 
+                     
 
 
-
-                      <div p="activities" style="display: none;">
+                      <div p="activities">
+                        <div class="table_options">
+                            <span class="active" o="0" onclick="search_activities(document.querySelector('[p=activities] .search-container input').value,this)">Pendentes</span><span o="1"  onclick="search_activities(document.querySelector('[p=activities] .search-container input').value,this)">Aprovados</span><span o="2"  onclick="search_activities(document.querySelector('[p=activities] .search-container input').value,this)">Rejeitados</span>
+                        </div>
                         <div class="_table">
                             <div class="options">
                                 <div class="_c">
@@ -1004,19 +1202,13 @@
                                         <span>0</span>
                                     </div>
                                     <div class="search-container">
-                                        <input placeholder="pesquise" id="search-payment" oninput="search_l(this.value)"/>
+                                        <input placeholder="pesquise" id="search-activites" oninput="search_activities(this.value)"/>
                                         <span class="close_input_bg"></span>
-                                        <label for="search-payment" onclick="document.querySelector('#search-payment').classList.toggle('show')">
+                                        <label for="search-activites" onclick="document.querySelector('#search-activites').classList.toggle('show')">
                                             <svg class="show"  xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M10 18a7.952 7.952 0 0 0 4.897-1.688l4.396 4.396 1.414-1.414-4.396-4.396A7.952 7.952 0 0 0 18 10c0-4.411-3.589-8-8-8s-8 3.589-8 8 3.589 8 8 8zm0-14c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6z"></path></svg>
                                         </label>
                                     </div>
-                                    <div class="btn-add" onclick="show_popup_f('add-payment')">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg>
-                                    </div>
-                                    <div onclick="delete_l()">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
-                                    </div>
-                                    <div onclick="print_l()">
+                                    <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                     </div>
                                 </div>
@@ -1039,8 +1231,9 @@
 
 
                       
-                      <div p="accounts_and_groups" style="display: none;">
+                      <div p="accounts_and_groups" style="display: none;margin-top: 1rem">
                               <div class="_table_section">
+                               
                                 <div class="_table _a">
                                     <span class="title" langs="pt:Contas,en:Accounts">Contas</span>
                                     <div class="options">
@@ -1061,7 +1254,7 @@
                                             <div onclick="delete_a()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                             </div>
-                                            <div onclick="print_l()">
+                                            <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                             </div>
                                         </div>
@@ -1097,7 +1290,7 @@
                                             <div onclick="delete_g()">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24" ><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
                                             </div>
-                                            <div onclick="print_l()">
+                                            <div onclick="setTimeout(()=>document.querySelector('.pop-ups .chose-download-file-format').classList.add('show'),100)">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="21" viewBox="0 0 24 24"><path d="M19 7h-1V2H6v5H5c-1.654 0-3 1.346-3 3v7c0 1.103.897 2 2 2h2v3h12v-3h2c1.103 0 2-.897 2-2v-7c0-1.654-1.346-3-3-3zM8 4h8v3H8V4zm8 16H8v-4h8v4zm4-3h-2v-3H6v3H4v-7c0-.551.449-1 1-1h14c.552 0 1 .449 1 1v7z"></path><path d="M14 10h4v2h-4z"></path></svg>
                                             </div>
                                         </div>
@@ -1115,6 +1308,46 @@
 
                            
                       </div>
+
+
+                      <div p="settings" style="display: none;">
+                        <div class="_container">
+                          <div class="company-details">
+                                 
+                                 <div class="logo-c">
+                                     <span>Perfil da Empresa</span>
+                                     <input id="c-logo" type="file" oninput="change_company_logo(this)" hidden>
+                                     <label for="c-logo">  
+                                        <div class="logo">
+                                                <img width="140">
+                                                <svg style="fill: #0808083f;" xmlns="http://www.w3.org/2000/svg" width="30" viewBox="0 0 24 24"><path d="m21.426 11.095-17-8A.999.999 0 0 0 3.03 4.242L4.969 12 3.03 19.758a.998.998 0 0 0 1.396 1.147l17-8a1 1 0 0 0 0-1.81zM5.481 18.197l.839-3.357L12 12 6.32 9.16l-.839-3.357L18.651 12l-13.17 6.197z"></path></svg>
+                                        </div>  
+                                     </label>
+                                      <button onclick="document.querySelector('.company-details input').click()">Trocar</button>   
+                                 </div>
+
+                                 <input placeholder="Nome">
+                                 
+                          </div>
+
+                          <div class="conf">
+                            <div class="set option-c">
+                                <div class="option access">
+                                      <div class="title" langs="pt:Acesso de usuários,en:Users access">Acesso de usuários</div>
+                                      <div>
+                                          <div onclick="set_f('switch-access')" class="switch">
+                                          </div>
+                                      </div>
+                                </div>
+                               
+                            </div>
+                          </div>
+                                     
+                       </div>
+                      </div>
+
+
+
                         
 
 
@@ -1130,6 +1363,7 @@
             </div>
         </div>
      </div>
+     <script src="js/socket.io-client.js"></script>
      <script src="js/chart.js"></script>
      <script src="js/jspdf.umd.min.js"></script>
      <script src="js/my-charts.js"></script>

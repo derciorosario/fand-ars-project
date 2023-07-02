@@ -1,0 +1,69 @@
+
+/*
+
+const data={
+  company_settings:{
+     img_src:'',
+     name:''
+  },
+  lancamentos:[
+   
+  {id:'1',conta_deb:'56890978964',conta_cred:'56890978964',cred_full_value:'4000.00MT',valor_cred:4000,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"1"},
+  {id:'2',conta_deb:'766807890',conta_cred:'56890978964',cred_full_value:'4000.00MT',valor_cred:4000,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"1"},
+  {id:'3',conta_deb:'56890978964',conta_cred:'123245657345',cred_full_value:'4000.00MT',valor_cred:4000,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"1"},
+
+],
+
+backup:{
+  lancamentos:[
+
+  ]
+},
+accounts:[
+ {id:'1',name:'Despesas',number:'56890978964'},
+ {id:'2',name:'Caixa e Bancos',number:'766807890'},
+ {id:'3',name:'Activos',number:'123245657345'},
+ {id:'4',name:'Inventario',number:'43490978964'},
+ {id:'5',name:'Inventario',number:'43646964'}
+],
+groups:[
+{id:'1',name:'Global',to:['1','2']},
+{id:'2',name:'Managers',to:['1','2','6','3']}
+],
+balanco:{activos_nao_correntes:[{activos_tangiveis:0,activos_intangiveis:0,activos_biologicos:0,investimentos:0}],
+        activos_correntes:[{inventarios:0,clientes:0,caixa_e_bancos:0,investimentos:0}],
+        outros:[{}]
+},
+users:[
+  {
+    id:'1',
+    name:'Gabriela Mateus',
+    email:'gabriela@gmail.com',
+    contact:'+258 84 4735 353',
+    password:'123',
+    active:true,
+    role:'----------',
+    account_access: [],
+    group_access:[],
+    access:[]
+  }
+],
+
+history:[
+
+      {
+        user_id:'1',
+        id:'1',
+        user:'Gabriela Mateus',
+        l_id:'1',
+        changes:1,
+        change:1,
+        type:'added',
+        time:'12:70',
+        date:'2023-04-30'
+      }
+      
+  ]
+
+}
+*/

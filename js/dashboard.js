@@ -1,3 +1,10 @@
+let my_socket
+
+my_socket=io(`https://ars-server.onrender.com/`)
+ 
+ 
+let SESSION={}
+ 
 let settings={
   lang:'pt',
   dark_mode:false
@@ -8,7 +15,7 @@ function save_settings(){
     lang:document.querySelector('.settings .option.lang select').value,
     dark_mode:document.querySelector('.container').classList.contains('dark-theme') ? true : false
 
-  }
+  } 
   localStorage.setItem('ars-settings',JSON.stringify(settings))
 }
  
@@ -26,90 +33,181 @@ setup()
 
 
 
-const data={
-  company_settings:{
-     img_src:'',
-     name:''
-  },
-  lancamentos:[
-    /*
-  {id:'1',conta_deb:'56890978964',conta_cred:'56890978964',cred_full_value:'4000.00MT',valor:4000,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"1"},
-  {id:'64e5fsfsd7574e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'434090.00MT',valor:434090,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"11"},
-  {id:'64e57fgfdg574e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'5686.00MT',valor:5686,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'credito',natureza:"4"},
-  {id:'64e5757gdvt4e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'8600.00MT',valor:8600,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"1"},
-  {id:'64e5757ertvet4e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'360.00MT',valor:360,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"2"},
-  {id:'64e5757tvet4e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'4540.00MT',valor:4540,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'credito',natureza:"5"},
-  {id:'64e5757weetve4e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'9040.00MT',valor:9040,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"6"},
-  {id:'64e5757ewertvet4e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'1360.00MT',valor:1360,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"12"},
-  {id:'64e5757twtrwvet4e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'94540.00MT',valor:494540,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'credito',natureza:"15"},
-  {id:'64e5757rweetve4e7457457',conta_deb:'3456346354',conta_cred:'56890978964',full_value:'430040.00MT',valor:430040,descricao:'Compra',data_lancamento:'2023-04-30',data_refelexo:'2023-06-30',hora:'12:60',usuario:'Gabriel Macamo',transicao:'debito',natureza:"18"}
-*/
-],
 
-backup:{
-  lancamentos:[
 
-  ]
-},
-accounts:[
- /*
- {id:'1',name:'Despesas',number:'56890978964'},
- {id:'2',name:'Caixa e Bancos',number:'766807890'},
- {id:'3',name:'Activos',number:'123245657345'},
- {id:'4',name:'Inventario',number:'43490978964'},
- {id:'5',name:'Forbecedores',number:'766807890'},
- {id:'6',name:'Emprestimo',number:'99845657345'}*/
-],
-groups:[
- /* {id:'1',name:'Global',to:['1','2']},
-  {id:'2',name:'Managers',to:['1','2','6','3']}*/
-],
-balanco:{activos_nao_correntes:[{activos_tangiveis:0,activos_intangiveis:0,activos_biologicos:0,investimentos:0}],
-        activos_correntes:[{inventarios:0,clientes:0,caixa_e_bancos:0,investimentos:0}],
-        outros:[{}]
-},
-users:[
-  {
-    id:'1',
-    name:'Gabriela Mateus',
-    email:'gabriela@gmail.com',
-    contact:'+258 84 4735 353',
-    password:'123',
-    active:true,
-    role:'----------',
-    account_access: [],
-    group_access:[],
-    access:[]
+
+
+let data={}
+let updated_data={}
+let deleted_files=[]
+let acccount_filter=[]
+let current_editing;
+let current_editing_a;
+let current_editing_g;
+let firtTimeToday=true
+
+
+
+
+function init_app(){
+
+  document.querySelector('.left-menu .user .info span').innerHTML=SESSION.name
+  document.querySelector('.home h3').innerHTML=`Olá, ${SESSION.name}!`
+
+  current_editing_a=[...data.accounts]
+  current_editing_g=[...data.groups]
+
+  add_history()
+  add_groups()
+  add_accounts()
+  add_activities()
+  update_painel_l()
+  add_l()
+  add_balanco()
+  add_stat_accounts()
+
+  if(SESSION.type=="admin"){
+    document.querySelector('[link_page=admin]').style.display="flex"
+    add_users()
   }
-],
 
-country_rates:{
-   MZN:64
-},
+}
 
-history:[
-/*
-      {
-        user_id:'1',
-        id:'1',
-        user:'Gabriela Mateus',
-        l_id:'1',
-        changes:1,
-        change:1,
-        type:'added',
-        time:'12:70',
-        date:'2023-04-30'
-      }
-      */
-  ]
+//initial loading
+
+let initial_loading_counting_interval
+let initial_loading_counting=0
+
+function initLoader(){
+
+ /* document.querySelector('.init_loader_container').classList.remove('hide')
+  initial_loading_counting_interval=setInterval(()=>{
+        document.querySelector('.loading_progress').innerHTML=`${initial_loading_counting+=1}%`
+        if(initial_loading_counting == 100){
+            clearInterval(initial_loading_counting_interval)
+
+            setTimeout(()=>{
+              document.querySelector('.init_loader_container').classList.add('end')
+              if(window.innerWidth <= 805){
+                      document.querySelector('.container').classList.add('hide')
+              }
+              setTimeout(()=>{
+                  document.querySelector('.init_loader_container').style.display="none"
+              },2000)
+            },500)
+
+            
+            }
+ },20);*/
+
+ document.querySelector('.init_loader_container').style.display="none"
+
 
 }
 
 
+
+if(!localStorage.getItem('ars-data')){
+  window.location.href=`index.html?user_is_logout`
+}else{
+  SESSION=JSON.parse(localStorage.getItem('ars-data')).session
+  my_socket.emit('join',SESSION)
+}
+
+
+
+
+my_socket.on('check_user',(res)=>{
+
+ 
+
+     if (res) {
+        data=JSON.parse(localStorage.getItem('ars-data')).data
+        init_app()
+        initLoader()
+     }else{
+        localStorage.removeItem('ars-data')
+        window.location.href=`index.html?user_is_logout`
+     }
+})
+
+
+
+function update_all(){
+
+  add_history()
+  add_groups()
+  add_accounts()
+  add_activities()
+  update_painel_l()
+  add_l()
+  add_balanco()
+  update_home()
+  add_messages()
+
+  if(SESSION.type=="admin"){
+    add_users()
+  }
+}
+
+
+my_socket.on('data',(new_data)=>{
+     
+     data=new_data
+     update_all()
+})
+
+
+function store_data(){
+  
+  
+
+
+}
+
+
+my_socket.on('new_data',(new_data)=>{
+
+      
+    
+       let hasNewChange=false
+
+        for (let i = 0; i < new_data.lancamentos.length; i++) {
+
+          let deleted_by=new_data.history.filter(h=>h.l_id==new_data.lancamentos[i].id)[0].user_id
+         
+          if(data.lancamentos.filter(l=>l.id==new_data.lancamentos[i].id && l.status!='deleted').length && new_data.lancamentos[i].status=='deleted'  && deleted_by!=SESSION.code) {
+               hasNewChange=true
+               deleted_files.push(new_data.lancamentos[i].id)
+          }
+
+       }
+
+
+      data=new_data
+
+     /* setTimeout(()=>update_all(),1400)*/
+     update_all()
+
+      if(hasNewChange) {
+          document.querySelector('.content.payment ._table').classList.add('data_update_available')
+      }  
+
+      //document.querySelector('[link_page=payment]').classList.contains('active')
+
+})
+
+
+function refresh_data(){
+   document.querySelector('.content.payment ._table').classList.remove('data_update_available')
+   deleted_files=[]
+   add_l()
+}
+
+
+
 function test(pop_up){
   if(pop_up=="l"){
-     
-
     document.querySelector('.payment_p [name=conta_deb]').value=`${Math.random().toString().slice(2,9)}`
     document.querySelector('.payment_p [name=conta_cred]').value=`${Math.random().toString().slice(2,9)}`
     document.querySelector('.payment_p [name=descricao]').value="hfasjdghjasdghjasdhgasjlghsdfjgh"
@@ -122,12 +220,10 @@ function test(pop_up){
 }
 
 
+function update_home(){
+  document.querySelector('[page=home] ._center .payment_count').innerHTML=data.lancamentos.length
+}
 
-
-let acccount_filter=[]
-let current_editing;
-let current_editing_a=[...data.accounts]
-let current_editing_g=[...data.groups]
 
 
 
@@ -199,7 +295,6 @@ function s_a(input,g_id){
     document.querySelector('.groups_and_accounts .account-div .list').innerHTML=``
   }
   let filter=current_editing_a.filter(a=>a.name.toLowerCase().includes(input.toLowerCase()))
-  console.log({g_id,current_editing_a})
   for (let i = 0; i < filter.length; i++) {
     const item=filter[i]
     const g_access=current_editing_g.filter(g=>g.id==g_id)[0].to
@@ -282,17 +377,10 @@ function check_and_uncheck_g_access(element,id,a_id){
 
 
 function check_and_uncheck_a_access(element,a_id,id){
-   /*let index=data.groups.findIndex(g=>g.id==id)
-   if(element.checked){
-     data.groups[index].to.push(a_id)
-   }else{
-     let g_index=data.groups[index].to.indexOf(a_id)
-     data.groups[index].to.splice(g_index,1)
-   }*/
+
 
    let index=current_editing_g.findIndex(g=>g.id==id)
-
-   console.log(data.groups)
+   
    if(element.checked){
      current_editing_g[index].to.push(a_id)
    }else{
@@ -306,8 +394,7 @@ function check_and_uncheck_a_access(element,a_id,id){
 function check_and_uncheck_user_access(element,id,userid,type){
      if(type=="account"){
           if(element.checked){
-            current_editing.account_access.push(id)
-           
+           if(!current_editing.account_access.includes(id)) current_editing.account_access.push(id)
           }else{
             if(current_editing.account_access.indexOf(id) != -1) current_editing.account_access.splice(current_editing.account_access.indexOf(id),1)
           }
@@ -487,7 +574,12 @@ function filter_h(l_id){
 }
 
 
-function search_l(input){
+function search_l(input,action){
+
+  if(action){
+    document.querySelectorAll('.payment .table_options span').forEach(e=>e.classList.remove('active'))
+    action.classList.add('active')
+  }
 
   if(!input) input=""
  
@@ -500,7 +592,7 @@ function search_l(input){
     item.data_lancamento.toLowerCase().includes(input.toLowerCase()) ||
     item.data_refelexo.toLowerCase().includes(input.toLowerCase()) ||
     item.hora.toLowerCase().includes(input.toLowerCase()) ||
-    item.usuario.toLowerCase().includes(input.toLowerCase())
+    item.created_by.toLowerCase().includes(input.toLowerCase())
   )
 
  
@@ -534,7 +626,7 @@ function search_activities(input,action){
     item.data_lancamento.toLowerCase().includes(input.toLowerCase()) ||
     item.data_refelexo.toLowerCase().includes(input.toLowerCase()) ||
     item.hora.toLowerCase().includes(input.toLowerCase()) ||
-    item.usuario.toLowerCase().includes(input.toLowerCase())
+    item.created_by.toLowerCase().includes(input.toLowerCase())
   )
 
  
@@ -568,7 +660,7 @@ function search_a(input){
   
 }
 
-search_a()
+
 
 
 function search_g(input){
@@ -589,7 +681,7 @@ function search_g(input){
   
 }
 
-search_g()
+
 
 
 function search_history(input){
@@ -640,15 +732,31 @@ function search_users(input){
 
 function delete_l(){
 
+  
+
   document.querySelectorAll('.payment .secondary .select input').forEach(e=>{
     if(e.checked) {
-        id=e.parentElement.parentElement.getAttribute('_id')
+        
+         id=e.parentElement.parentElement.getAttribute('_id')
+         let index=data.lancamentos.findIndex(item=>item.id == id)
+         if(deleted_files.includes(id)){
+            deleted_files.splice(deleted_files.indexOf(id),1)
+            if(!deleted_files.length) document.querySelector('.content.payment ._table').classList.remove('data_update_available')
+            add_l()
+            return
+         }
+         data.lancamentos[index].status='deleting'
          add_new_h('delete',id,data.lancamentos.filter(l=>l.id==id)[0])
-        data.lancamentos=data.lancamentos.filter(item=>item.id != id)
+         let changers=[]
+         let get_changes=data.history.filter(h=>h.l_id==id)
+         for (let i = 0; i < get_changes.length; i++) {
+             if(!changers.includes(get_changes[i].user_id)) changers.push(get_changes[i].user_id)
+         }
+         data.lancamentos[index].changed_by=changers
     }
   })
 
-  
+  add_to_server({data:data.lancamentos,action:'delete_l',session:SESSION})
 
   search_l(document.querySelector('.payment .search-container input').value)
   update_painel_l()
@@ -688,6 +796,7 @@ function delete_user(){
         data.users=data.users.filter(item=>item.id != id)
     }
   })
+  add_to_server({data,action:'add_users_accounts_and_groups',session:SESSION})
   search_users(document.querySelector('[p=users] .search-container input').value)
  
 }
@@ -706,19 +815,46 @@ function delete_single_a(id){
 }
 function delete_single_g(id){
 
+  
+
   data.groups=data.groups.filter(item=>item.id != id)
   document.querySelector('.pop-ups .groups_and_accounts').classList.remove('show')
   search_g(document.querySelector('[p=accounts_and_groups] ._g .search-container input').value)
 
+  
+
 }
 
 function delete_single_l(id){
+
+
+  let index=data.lancamentos.findIndex(item=>item.id == id)
+  if(deleted_files.includes(id)){
+    deleted_files.splice(deleted_files.indexOf(id),1)
+    if(!deleted_files.length) document.querySelector('.content.payment ._table').classList.remove('data_update_available')
+    add_l()
+    document.querySelector('.pop-ups .payment_p').classList.remove('show')
+    return
+  }
+
+  data.lancamentos[index].status='deleting'
+  add_to_server({data:data.lancamentos,action:'delete_l',session:SESSION})
   add_new_h('delete',id,data.lancamentos.filter(l=>l.id==id)[0])
-  data.lancamentos=data.lancamentos.filter(item=>item.id != id)
+  let changers=[]
+  let get_changes=data.history.filter(h=>h.l_id==id)
+  for (let i = 0; i < get_changes.length; i++) {
+      if(!changers.includes(get_changes[i].user_id)) changers.push(get_changes[i].user_id)
+  }
+  data.lancamentos[index].changed_by=changers
+
   document.querySelector('.pop-ups .payment_p').classList.remove('show')
   search_l(document.querySelector('.payment .search-container input').value)
   update_painel_l()
   add_balanco()
+  add_l()
+  
+
+
 }
 
 let payment_data={}
@@ -778,8 +914,6 @@ function check_user_fields(){
   update_payment_data()
   let {name,email,contact,role,password}=user_data 
 
-  console.log(name.value)
-
   if(!name.value || !email.value || !contact.value || !password.value){
     document.querySelector('.container .pop-ups .users .msg').classList.add('show')
     clearTimeout(payment_error_timeout)
@@ -791,7 +925,7 @@ function check_user_fields(){
   }
 
 }
-let d;
+
 
 function see_history_filter(l_id,h_change){
 
@@ -808,7 +942,7 @@ function see_history_filter(l_id,h_change){
    
       document.querySelector('.pop-ups .history_filter .l_container').innerHTML+=`
         <div class="box">
-        <div class="details"><span>${h_data[i].change}/${h_data[i].changes} <label style="color:${h_data[i].type=='add' ? 'green' : h_data[i].type == 'delete' ? 'crimson' : 'orange'}">${h_data[i].type.toUpperCase()}<label></span><span>${h_data[i].date} - ${h_data[i].time}</span></div>
+        <div class="details"><span>${h_data[i].change}/${h_data[i].changes} <label style="color:${h_data[i].type=='add' ? 'green' : h_data[i].type == 'delete' ? 'crimson' : 'orange'}">${h_data[i].type.toUpperCase()}<label></span><span><label style="color:var(--black-color)">Por: </label> ${h_data[i].user_id==SESSION.code ? '(Você)' : h_data[i].user}</span><span>${h_data[i].date} - ${h_data[i].time}</span> </div>
         <div class="item">
           <div class="d">
               <span class="name">Conta (debito)</span><span class="value">${h_data[i==0?i:i-1].l_data.conta_deb}</span>
@@ -887,6 +1021,13 @@ function see_history_filter(l_id,h_change){
 
 }
 
+
+function add_to_server(new_data) {
+
+     my_socket.emit('add',new_data)
+     
+}
+
 function add_new_l_f(){
    update_payment_data() 
 
@@ -896,28 +1037,31 @@ function add_new_l_f(){
    let l_id=`${Math.random()}${Math.random()}${Math.random()}${Math.random()}${Math.random()}`
 
    let l_data={
-   id:l_id,
-   num:data.backup.lancamentos.length + 1,
-   conta_cred:conta_cred.value,
-   conta_deb:conta_deb.value,
-   data_refelexo:data_refelexo.value,
-   descricao:descricao.value,
-   valor_cred:parseFloat(valor_cred.value) ? parseFloat(valor_cred.value):0,
-   valor_deb:parseFloat(valor_deb.value) ? parseFloat(valor_deb.value):0,
-   usuario:'Sandra Almeida',
-   data_lancamento:new Date().getFullYear() + "-" + new Date().getDay() + "-" + new Date().getMonth(),
-   deb_full_value:parseFloat(valor_deb.value) ? parseFloat(valor_deb.value) +".00MT" : 0 +".00MT",
-   cred_full_value:parseFloat(valor_cred.value) ? parseFloat(valor_cred.value) +".00MT" : 0 +".00MT",
-   hora:new Date().getHours()+":"+new Date().getMinutes(),
-   natureza:natureza.value,
-   status:0
+     id:l_id,
+     num:'?',
+     conta_cred:conta_cred.value,
+     conta_deb:conta_deb.value,
+     data_refelexo:data_refelexo.value,
+     descricao:descricao.value,
+     valor_cred:parseFloat(valor_cred.value) ? parseFloat(valor_cred.value):0,
+     valor_deb:parseFloat(valor_deb.value) ? parseFloat(valor_deb.value):0,
+     created_by:SESSION.name,
+     changed_by:[SESSION.code],
+     data_lancamento:'------------',
+     deb_full_value:parseFloat(valor_deb.value) ? parseFloat(valor_deb.value) +".00 "+document.querySelector('select.rate.valor_deb').value : 0 +".00 "+document.querySelector('select.rate.valor_deb').value,
+     cred_full_value:parseFloat(valor_cred.value) ? parseFloat(valor_cred.value) +".00 "+document.querySelector('select.rate.valor_cred').value : 0 +".00 "+document.querySelector('select.rate.valor_cred').value,
+     hora:'--------',
+     natureza:natureza.value,
+     status:'sending',
+     user_id:SESSION.code
   }
 
   data.lancamentos.unshift(l_data)
+
   data.backup.lancamentos.unshift({...l_data})
 
   data.history.unshift({
-        user_id:'1',
+        user_id:SESSION.code,
         num:data.backup.lancamentos.filter(l=>l.id==l_id)[0].num,
         id:Math.random().toString().slice(2,8),
         user:'Gabriela Mateus',
@@ -927,36 +1071,46 @@ function add_new_l_f(){
         type:'add',
         time:new Date().getHours()+":"+new Date().getMinutes(),
         date:new Date().getFullYear() + "-" + new Date().getDay() + "-" + new Date().getMonth(),
+        status:'sending',
         l_data:{...l_data}
   })
 
   add_history()
   add_activities()
+  add_stat_accounts()
+  add_stat_accounts_list()
+  
   
   document.querySelector('.pop-ups .payment_p').classList.remove('show')
-  add_l()
+  search_l(document.querySelector('.payment .search-container input').value,document.querySelector('.payment .table_options [o=all]'))
   update_painel_l()
   add_balanco()
   document.querySelector('.payment .search-container input').value=""
   document.querySelector('.payment .search-container input').classList.remove('show')
+
+  add_to_server({data:data.lancamentos,action:'add_l',session:SESSION})
   
 }
 
 function add_new_user(){
+
   if(!check_user_fields()) return
   update_payment_data()
   let {name,email,contact,role,password}=user_data 
-  current_editing.id=Math.random().toString().slice(2,8)
+  current_editing.id=`${data.users.length+1}` //`temp(${Math.random().toString().slice(2,5)})`
   current_editing.name=name.value
   current_editing.email=email.value
   current_editing.contact=contact.value
   current_editing.password=password.value
-  current_editing.role='----------'//role.value
+  current_editing.role='----------'
   data.users.unshift(current_editing)
+  add_to_server({data,action:'add_users_accounts_and_groups',session:SESSION})
   add_users()
   document.querySelector('.pop-ups .users').classList.remove('show')
   document.querySelector('[p=users] .search-container input').value=""
   document.querySelector('[p=users] .search-container input').classList.remove('show')
+
+
 }
 
 
@@ -979,7 +1133,7 @@ function add_new_a(){
   data.accounts=[...current_editing_a]
   data.groups=[...current_editing_g]
 
-
+  add_to_server({data,action:'add_users_accounts_and_groups',session:SESSION})
   search_a()
   document.querySelector('.pop-ups .groups_and_accounts').classList.remove('show')
 
@@ -1003,7 +1157,7 @@ function add_new_g(){
   data.groups[0].name=name.value
 
 
-
+  add_to_server({data,action:'add_users_accounts_and_groups',session:SESSION})
   search_g()
   document.querySelector('.pop-ups .groups_and_accounts').classList.remove('show')
 
@@ -1023,14 +1177,15 @@ function add_new_h(type,l_id,l_data){
 
         
         data.history.unshift({
-        user_id:'1',
-        num:data.backup.lancamentos.filter(l=>l.id==l_id)[0].num,
+        user_id:SESSION.code,
+        num:data.lancamentos.filter(l=>l.id==l_id)[0].num,
         id:Math.random().toString().slice(2,8),
-        user:'Gabriela Mateus',
+        user:SESSION.name,
         l_id,
         changes:change,
         change,
         type,
+        status:data.lancamentos.filter(l=>l.id==l_id)[0].status,
         time:new Date().getHours()+":"+new Date().getMinutes(),
         date:new Date().getFullYear() + "-" + new Date().getDay() + "-" + new Date().getMonth(),
         l_data:{...l_data}
@@ -1059,6 +1214,8 @@ function edit_l_f(id,isAcceped){
      data.lancamentos[index].valor_cred != parseFloat(valor_cred.value) ||
      data.lancamentos[index].natureza != natureza.value){
          hasChanged=true
+    }else{
+      return
     }
 
     
@@ -1069,10 +1226,12 @@ function edit_l_f(id,isAcceped){
     data.lancamentos[index].descricao=descricao.value
     data.lancamentos[index].valor_deb=parseFloat(valor_deb.value)
     data.lancamentos[index].valor_cred=parseFloat(valor_cred.value)
-    data.lancamentos[index].deb_full_value=parseFloat(valor_deb.value) ? parseFloat(valor_deb.value) +".00MT" : 0 +".00MT"
-    data.lancamentos[index].cred_full_value=parseFloat(valor_cred.value) ? parseFloat(valor_cred.value) +".00MT" : 0 +".00MT"
+    data.lancamentos[index].deb_full_value=parseFloat(valor_deb.value) ? parseFloat(valor_deb.value) +".00 "+document.querySelector('select.rate.valor_deb').value : 0 +".00 "+document.querySelector('select.rate.valor_deb').value
+    data.lancamentos[index].cred_full_value=parseFloat(valor_cred.value) ? parseFloat(valor_cred.value) +".00 "+document.querySelector('select.rate.valor_cred').value : 0 +".00 "+document.querySelector('select.rate.valor_cred').value
     data.lancamentos[index].natureza=natureza.value
-    if(isAcceped) data.lancamentos[index].status=1
+    data.lancamentos[index].next_status=isAcceped ? 'approved' : data.lancamentos[index].status
+    data.lancamentos[index].status='editing'
+
     
     let b_index=data.lancamentos.findIndex(item=>item.id==id)
     data.backup.lancamentos[b_index]={...data.lancamentos[index]}
@@ -1080,11 +1239,25 @@ function edit_l_f(id,isAcceped){
 
 
 
-  if(hasChanged)  add_new_h('edit',id,data.lancamentos.filter(l=>l.id==id)[0])
+   if(hasChanged)  add_new_h('edit',id,data.lancamentos.filter(l=>l.id==id)[0])
+
+   add_to_server({data:data.lancamentos,action:'edit_l',session:SESSION})
+
+   let changers=[]
+
+   let get_changes=data.history.filter(h=>h.l_id==id)
+
+   for (let i = 0; i < get_changes.length; i++) {
+       if(!changers.includes(get_changes[i].user_id)) changers.push(get_changes[i].user_id)
+   }
+    
+   
+   data.lancamentos[index].changed_by=changers
 
    search_l(document.querySelector('.payment .search-container input').value)
    update_painel_l()
-
+   add_stat_accounts()
+   add_stat_accounts_list()
    add_activities()
    document.querySelector('.pop-ups .payment_p').classList.remove('show')
 
@@ -1097,7 +1270,7 @@ function edit_a(id){
   data.accounts[i].name=name.value
   data.accounts[i].number=number.value
   data.groups=[...current_editing_g]
-
+  add_to_server({data,action:'add_users_accounts_and_groups',session:SESSION})
   search_a(document.querySelector('[p=accounts_and_groups] ._a .search-container input').value)
   document.querySelector('.pop-ups .groups_and_accounts').classList.remove('show')
 
@@ -1111,6 +1284,7 @@ function edit_g(id){
   data.groups=[...current_editing_g]
   const i=data.groups.findIndex(u=>u.id==id)
   data.groups[i].name=name.value
+  add_to_server({data,action:'add_users_accounts_and_groups',session:SESSION})
   search_g(document.querySelector('[p=accounts_and_groups] ._g .search-container input').value)
   document.querySelector('.pop-ups .groups_and_accounts').classList.remove('show')
 
@@ -1121,12 +1295,14 @@ function edit_user(id){
     update_payment_data()
     const {name,email,role,contact,password}=user_data
     const i=data.users.findIndex(u=>u.id==id)
+    console.log(current_editing)
     data.users[i]=current_editing
     data.users[i].name=name.value
     data.users[i].email=email.value
     data.users[i].contact=contact.value
     data.users[i].password=password.value
     data.users[i].role='----------'//role.value
+    add_to_server({data,action:'add_users_accounts_and_groups',session:SESSION})
     search_users(document.querySelector('[p=users] .search-container input').value)
     document.querySelector('.pop-ups .users').classList.remove('show')
 
@@ -1153,7 +1329,7 @@ function add_history(new_data){
       <div class="_role"><span>Alterações</span></div>
       <div class="_email"><span>Hora</span></div>
       <div class="_password"><span>Data</span></div>
-      <div class="_contact"><span>Usuário</span></div>
+      <div class="_contact"><span>Alterado por</span></div>
       <div></div>
     </div>
    `
@@ -1164,10 +1340,13 @@ function add_history(new_data){
    for (let i = 0; i < h_data.length; i++) {
 
     const item=h_data[i]
+
+    
     
      h_container.innerHTML+=`
      
-       <div class="item secondary" _id="${item.id}">
+       <div class="item class="item secondary ${item.status=='sending' || item.status=='editing'  || item.status=='approving' || item.status=='rejecting' || item.status=='approving' || item.status=='rejecting' || item.status=='deleting' ? 'not_sent' : ''} ${item.status=='deleted' ? 'does_not_exist' : ''}" _id="${item.id}">
+          <div class="loader"></div>
           <div class="bg" onclick="see_history_filter('${item.l_id}','${item.change}')"></div>
           <div class="_filter" onclick="filter_h('${item.l_id}')">
                   <svg class="filter" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" width="48"><path d="M440-160q-17 0-28.5-11.5T400-200v-240L161-745q-14-17-4-36t31-19h584q21 0 31 19t-4 36L560-440v240q0 17-11.5 28.5T520-160h-80Zm40-276 240-304H240l240 304Zm0 0Z"/></svg>
@@ -1178,7 +1357,7 @@ function add_history(new_data){
           <div class="_role"><span>${item.change}/${item.changes}</span></div>
           <div class="_email"><span>${item.time}</span></div>
           <div class="_password"><span>${item.date}</span></div>
-          <div class="_contact"><span>${item.user}</span></div>
+          <div class="_contact"><span  class="${item.user_id == SESSION.code ? 'by_me' : ''}">${item.user_id == SESSION.code ? '(Você)' : item.user}</span></div>
           <div></div>
      </div>
      `
@@ -1193,7 +1372,7 @@ function add_history(new_data){
 
 }
 
-add_history()
+
 
 
 
@@ -1242,8 +1421,196 @@ function add_groups(new_data){
 
 
 }
+ 
 
-add_groups()
+
+function search_add_stat_accounts_list(input){
+  if(!input) input=""
+ 
+ 
+  const filter=data.accounts.filter(item=>
+    item.name.toLowerCase().includes(input.toLowerCase()) ||
+    item.number.toLowerCase().includes(input.toLowerCase())
+  )
+
+ 
+  if(!document.querySelector('.analysis  [p="accounts"] .search-c input').value){
+    add_stat_accounts_list(data.accounts)
+  }else{
+    add_stat_accounts_list(filter)
+  }
+
+}
+
+
+
+
+
+function change_analysis_chart_a(id,show_all){
+
+  
+
+    if(show_all){
+
+      document.querySelector(`.analysis  [p="accounts"] .chart-c .best`).style.display="flex"
+      document.querySelector(`.analysis  [p="accounts"] .chart-c .account-chart`).style.display="none"
+      document.querySelectorAll(`.analysis  .center_items .box`).forEach(e=>e.classList.remove('active'))
+      show_all.classList.add('active')
+      document.querySelector('.analysis  [p="accounts"] .horizontal_scroll').scrollLeft=show_all.offsetLeft - (document.querySelector('.analysis  [p="accounts"] .horizontal_scroll').clientHeight /1.5)
+      return
+
+    }
+    
+    
+    let a=data.accounts.filter(a=>a.id==id)[0]
+    document.querySelector(`.analysis  [p="accounts"] .chart-c .account-chart`).style.display="block"
+    document.querySelector(`.analysis  [p="accounts"] .chart-c .best`).style.display="none"
+    document.querySelector(`.analysis  [p="accounts"] .chart-c .title`).innerHTML=`Tendências: ${a.name} (${a.number})`
+    document.querySelectorAll(`.analysis  [p="accounts"] .chart-c .list .item`).forEach(e=>e.classList.remove('active'))
+    document.querySelector(`.analysis  [p="accounts"] .chart-c .list [_id="${id}"]`).classList.add('active')
+    set_analysis_chart_a([],a.name)
+    document.querySelectorAll(`.analysis  .center_items .box`).forEach(e=>e.classList.remove('active'))
+    document.querySelector(`.analysis  [p="accounts"] .center_items [_id='${id}']`).classList.add('active')
+    document.querySelector(`.analysis  [p="accounts"] .chart-c .chart`).setAttribute('current_chart',id)
+    document.querySelector('.analysis  [p="accounts"] .horizontal_scroll').scrollLeft=document.querySelector(`.analysis  [p="accounts"] .center_items [_id='${id}']`).offsetLeft - (document.querySelector('.analysis  [p="accounts"] .horizontal_scroll').clientHeight /1.5)
+   
+
+
+}
+
+
+function add_stat_accounts_list(new_data){
+
+  let a_data=new_data ? new_data : data.accounts
+  let active_item=document.querySelector(`.analysis  [p="accounts"] .chart-c .chart`).getAttribute('current_chart')
+
+ 
+
+  let a_list=document.querySelector(`.analysis  [p="accounts"] .chart-c .list`)
+
+   a_list.innerHTML=`
+    <div class="item main">
+     <span>Nome</span>
+     <span>Número</span>
+    </div>
+   `
+
+   for (var i = 0; i < a_data.length; i++) {
+
+         a_list.innerHTML+=`
+            <div _id="${a_data[i].id}" class="item ${active_item == a_data[i].id ? 'active' : ''}" onclick="change_analysis_chart_a('${a_data[i].id}')">
+             <span>${a_data[i].name}</span>
+             <span>${a_data[i].number}</span>
+         </div>`
+
+         
+   }
+}
+
+
+function add_stat_accounts(new_data) {
+   
+
+   
+ //  let a_data=new_data ? new_data : data.accounts
+
+  // let a_c=document.querySelector(`.analysis  [p="accounts"] .center_items`)
+
+   let l_data=new_data ? new_data : data.lancamentos.filter(l=>l.status=="approved")
+
+ 
+
+   let l_total=0
+   for (let i = 0; i < l_data.length; i++) {
+       l_total+=l_data[i].valor_cred+l_data[i].valor_deb
+   }
+
+   let a_top_list=document.querySelector(`.analysis  [p="accounts"] .center_items`)
+   a_top_list.innerHTML=`
+    <div class="box active" onclick="change_analysis_chart_a(null,this)">
+    <div class="left">
+       <span>Todas contas</span>
+       <span class="total">${l_total} MT</span>
+     </div>
+    </div>
+   `
+
+
+
+   
+
+
+   let best_accounts=[]
+  
+
+   for (let i = 0; i < data.accounts.length; i++) {
+    if(!best_accounts[i]?.value)  best_accounts[i]={id:data.accounts[i].id,value:0,number:data.accounts[i].number,name:data.accounts[i].name,total:0}
+   
+      for (let j = 0; j < l_data.length; j++) {
+
+           if(l_data[j].conta_cred==data.accounts[i].number) {
+            best_accounts[i].total+=l_data[j].valor_cred
+            best_accounts[i].value+=1
+           }
+           if(l_data[j].conta_deb==data.accounts[i].number)   {
+            best_accounts[i].total+=l_data[j].valor_deb
+            best_accounts[i].value+=1
+           }
+          
+        
+      }
+    
+   }
+
+   best_accounts.sort((a, b) => b.value - a.value)
+
+   
+
+   document.querySelector(`.analysis  [p="accounts"] .best`).innerHTML=""
+
+   let times_total=0
+   for (let i = 0; i < best_accounts.length; i++)  times_total+=best_accounts[i].value
+
+   for (let i = 0; i < best_accounts.length; i++) {
+      document.querySelector(`.analysis  [p="accounts"] .best`).innerHTML+=`
+      <div class="item">
+      <div class="desc">
+         <span class="name">${best_accounts[i].name}</span>
+         <span class="number">${best_accounts[i].number}</span>
+      </div>
+     <div class="bar-c">
+        <span class="bar" style="width:${!best_accounts[i].value || !times_total ? '0' : (best_accounts[i].value / times_total * 100).toString().slice(0,4)}%"></span>
+        <span class="times">${!best_accounts[i].value || !times_total ? '0' : (best_accounts[i].value / times_total * 100).toString().slice(0,4)}%</span>
+     </div>
+     <span class="percetage">${best_accounts[i].value}</span>
+     </div>
+      `
+   }
+
+
+   for (let i = 0; i < best_accounts.length; i++) {
+    a_top_list.innerHTML+=`
+    <div class="box" _id="${best_accounts[i].id}" onclick="change_analysis_chart_a('${best_accounts[i].id}')">
+    <div class="left">
+            <span>${best_accounts[i].name}</span>
+            <span class="debito">${best_accounts[i].total}MT</span>
+    </div>
+    <div class="right">
+              <div>
+                  <span class="debito-percentage res">${!best_accounts[i].value || !times_total ? '0' : (best_accounts[i].value / times_total * 100).toString().slice(0,4)}%</span>
+              </div>
+              <div>
+            <span>${best_accounts[i].number}</span>
+          </div>
+      </div>
+    </div>
+    `
+    }
+
+
+    add_stat_accounts_list()
+   
+}
 
 
 function add_accounts(new_data){
@@ -1287,11 +1654,12 @@ function add_accounts(new_data){
 
  document.querySelector('.admin  div[p="accounts_and_groups"] ._a .item_count span').innerHTML=a_data.length
 
-
+ add_stat_accounts()
+ add_stat_accounts_list()
 
 }
 
-add_accounts()
+
 
 
 function add_users(new_data){
@@ -1319,63 +1687,65 @@ function add_users(new_data){
 
    for (let i = 0; i < user_data.length; i++) {
 
+
+
     const item=user_data[i]
-    
-     u_container.innerHTML+=`
+
+  
+      u_container.innerHTML+=`
      
-       <div class="item secondary" _id="${item.id}">
-          <div class="bg" onclick="admin_edit_user('${item.id}','${item.name}','${item.role}','${item.email}','${item.password}','${item.contact}','${item.active}','${item.account_access}','${item.group_access}','${item.access}')"></div>
-          <div class="select"><input type="checkbox" onclick="check_and_uncheck_users(this)"/></div>
-          <div class="_id"><span>${user_data[i].id}</span></div>
-          <div class="_user"><span>${user_data[i].name}</span></div>
-          <div class="_role"><span>${user_data[i].role}</span></div>
-          <div class="_email"><span>${user_data[i].email}</span></div>
-          <div class="_password"><span>********</span></div>
-          <div class="_contact"><span>${user_data[i].contact}</span></div>
-          <div class="_status"><span>${user_data[i].active ? 'Activo' : 'Offline'}</span></div>
-          <div></div>
-     </div>
-     `
+      <div class="item secondary" _id="${item.id}">
+         <div class="bg" onclick="admin_edit_user('${item.id}','${item.name}','${item.role}','${item.email}','${item.password}','${item.contact}','${item.active}','${item.account_access}','${item.group_access}','${item.access}')"></div>
+         <div class="select"><input type="checkbox" onclick="check_and_uncheck_users(this)"/></div>
+         <div class="_id"><span>${user_data[i].id}</span></div>
+         <div class="_user"><span>${user_data[i].name}</span></div>
+         <div class="_role"><span>${user_data[i].role}</span></div>
+         <div class="_email"><span>${user_data[i].email}</span></div>
+         <div class="_password"><span>********</span></div>
+         <div class="_contact"><span>${user_data[i].contact}</span></div>
+         <div class="_status"><span>${user_data[i].active ? 'Activo' : 'Offline'}</span></div>
+         <div></div>
+    </div>
+    `
+   
+    
+    
     
  }
 
-
-
  document.querySelector('[p=users] .item_count span').innerHTML=user_data.length
-
-
 
 }
 
-add_users()
+
 
 
 
 function add_activities(new_data){
-  
  
-  let ac_data=new_data ? new_data : data.lancamentos.filter(l=>l.status==0)
+  let ac_data=new_data ? new_data.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id))) : data.lancamentos.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id)))
   
   ac_data=ac_data.filter(a=>a.status==document.querySelector('[p=activities] .table_options span.active').getAttribute('o'))
  
   ac_container=document.querySelector(`.admin ._bottom > div[p="activities"] ._table_container`)
 
    const title_bar=`
-    <div class="item main">
-      <div class="select"><input type="checkbox" onclick="check_and_uncheck_payment_f()"/></div>
-      <div class="_id"><span>Nº</span></div>
-      <div class="_name"><span>Conta (Débito)</span></div>
-      <div class="_date"><span>Valor</span></div>
-      <div class="_name"><span>Conta (Crédito)</span></div>
-      <div class="_date"><span>Valor</span></div>
-      <div class="_status"><span>Estado</span></div>
-      <div class="_desc"><span>Descrição</span></div>
-      <div class="_total"><span>D. lançamento</span></div>
-      <div class="_time"><span>D. reflexo</span></div>
-      <div class="hora"><span>Hora</span></div>
-      <div class="_user"><span>Usuário</span></div>
-      <div></div>
-    </div>
+   <div class="item main">
+   <div class="select"><input type="checkbox" onclick="check_and_uncheck_payment_f()"/></div>
+   <div class="_id"><span>Nº</span></div>
+   <div class="_name"><span>Conta (Débito)</span></div>
+   <div class="_date"><span>Valor</span></div>
+   <div class="_name"><span>Conta (Crédito)</span></div>
+   <div class="_date"><span>Valor</span></div>
+   <div class="_status"><span>Estado</span></div>
+   <div class="_desc"><span>Descrição</span></div>
+   <div class="_total"><span>D. lançamento</span></div>
+   <div class="_time"><span>D. reflexo</span></div>
+   <div class="hora"><span>Hora</span></div>
+   <div class="_changer"><span>Alterado por</span></div>
+   <div class="_user"><span>Criado por</span></div>
+   <div></div>
+   </div>
    `
 
   ac_container.innerHTML=title_bar
@@ -1386,23 +1756,38 @@ function add_activities(new_data){
      
       ac_container.innerHTML+=`
       
-        <div class="item secondary" _id="${item.id}">
-          <div class="bg" onclick="l_edit('${item.id}','${item.conta_deb}','${item.conta_cred}','${item.valor_deb}','${item.valor_cred}','${item.descricao}','${item.data_refelexo}','${item.natureza}','${item.status}','activities')"></div>
-          <div class="select"><input type="checkbox" onclick="check_and_uncheck_payment_f(this)"/></div>
-          <div class="conta"><span>${item.num}</span></div>
-          <div class="conta"><span>${item.conta_cred}</span></div>
-          <div class="valor"><span>${item.deb_full_value}</span></div>
-          <div class="conta"><span>${item.conta_deb}</span></div>
-          <div class="valor"><span>${item.cred_full_value}</span></div>
-          <div class="status ${item.status == 0 ? 'orange': item.status == 1 ? 'green' : 'red'}"><span>${item.status == 0 ? 'Pendente': item.status == 1 ? 'Aprovado' : 'Rejeitado'}</span></div>
-          <div class="desc"><span>${item.descricao.length < 13 ? item.descricao: item.descricao.slice(0,13)+"..." }</span></div>
-          <div class="d_l"><span>${item.data_lancamento}</span></div>
-          <div class="_time"><span>${item.data_refelexo}</span></div>
-          <div class="hora"><span>${item.hora}</span></div>
-          <div class="_user"><span>${item.usuario}</span></div>
-          
-          <div></div>
+      <div class="item secondary ${item.status=='sending' || item.status=='editing'  || item.status=='approving' || item.status=='rejecting' || item.status=='deleting' ? 'not_sent' : ''} ${item.status=='deleted' ? 'does_not_exist' : ''}"  _id="${item.id}">
+      <div class="loader"></div>
+      <div class="bg" onclick="l_edit('${item.id}','${item.conta_deb}','${item.conta_cred}','${item.valor_deb}','${item.valor_cred}','${item.descricao}','${item.data_refelexo}','${item.natureza}','${item.status}','actividades')"></div>
+      <div class="select"><input type="checkbox" onclick="check_and_uncheck_payment_f(this)"/></div>
+      <div class="conta"><span>${item.num}</span></div>
+      <div class="conta"><span>${item.conta_cred}</span></div>
+      <div class="valor"><span>${item.deb_full_value}</span></div>
+      <div class="conta"><span>${item.conta_deb}</span></div>
+      <div class="valor"><span>${item.cred_full_value}</span></div>
+      <div class="status ${item.status == 'sending' ? 'sending' : item.status == 'pending' ? 'pending': item.status == 'deleting' ? 'deleting' : item.status == 'rejected' ? 'rejected' : item.status == 'approved' ? 'approved' : item.status == 'deleted' ? 'deleted' : item.status == 'editing' ? 'editing' : item.status == 'rejecting' ? 'rejecting' : item.status == 'approving' ? 'approving' : ''}"><span>${item.status == 'sending' ? 'A enviar...' : item.status == 'pending' ? 'Pendente': item.status == 'deleting' ? 'A deletar...' : item.status == 'rejected' ? 'Rejeitado' : item.status == 'approved' ? 'Aprovado' : item.status == 'deleted' ? 'Deletado' : item.status == 'editing' ? 'A editar...' : item.status == 'rejecting' ? 'A rejeitar...' : item.status == 'approving' ? 'A aprovar' : ''}</span></div>
+      <div class="desc"><span>${item.descricao.length < 13 ? item.descricao: item.descricao.slice(0,13)+"..." }</span></div>
+      <div class="d_l"><span>${item.data_lancamento}</span></div>
+      <div class="_time"><span>${item.data_refelexo}</span></div>
+      <div class="hora"><span>${item.hora}</span></div>
+      <div class="_changer">
+        <span>
+           <label class="times">[${data.history.filter(h=>h.l_id==item.id).length}]</label>
+           <label class="by_me" onclick="see_history_filter('${item.id}','${data.history.filter(h=>h.l_id==item.id).length}')">
+             ${data.history.filter(h=>h.l_id==item.id)[0].user_id==SESSION.code ? '(Você)': data.history.filter(h=>h.l_id==item.id)[0].user}
+          </label>
+          <label onclick="see_history_filter('${item.id}','${data.history.filter(h=>h.l_id==item.id && h.user_id==SESSION.code).length ? data.history.filter(h=>h.l_id==item.id && h.user_id==SESSION.code)[0].change :'1'}')">
+             ${data.history.filter(h=>h.l_id==item.id)[0].user_id!=SESSION.code && item.changed_by.includes(SESSION.code) ? ', (Você)':''}
+          </label>
+          <label onclick="see_history_filter('${item.id}','1')">
+            ${data.history.filter(h=>h.l_id==item.id)[0].user_id==SESSION.code && item.changed_by.length >= 2 ? ', +'+(item.changed_by.length - 1) : item.changed_by.includes(SESSION.code) && item.changed_by.length >= 3 ? ', +'+(item.changed_by.length - 2): !item.changed_by.includes(SESSION.code) &&  item.changed_by.length >=2  ? ', +'+(item.changed_by.length - 1) : ''}
+          </label>
+        </span>
       </div>
+      <div class="_user"><span class="${item.user_id == SESSION.code ? 'by_me' : ''}">${item.user_id == SESSION.code ? '(Você)' : item.created_by}</span></div>
+      
+      <div></div>
+  </div>
       `
      
   }
@@ -1417,12 +1802,15 @@ function add_activities(new_data){
   //add count
   document.querySelector('[p=activities] .item_count span').innerHTML=ac_data.length
  
-
+  document.querySelectorAll('[p=activities] .table_options span').forEach(e=>{
+    let all_available_l=data.lancamentos.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id))).length ? data.lancamentos.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id))).length : "0"
+    e.children[1].innerHTML=`(${e.getAttribute('o')=="all" ? all_available_l : data.lancamentos.filter(l=>l.status==e.getAttribute('o')).length})`
+  })
   
  
 
 }
-add_activities()
+
 
 
 
@@ -1444,7 +1832,7 @@ function add_l(new_data){
         <div class="d_l"><span style="font-weight:600">Data de lançamento: </span><span>${item.data_lancamento}</span></div>
         <div class="_time"><span style="font-weight:600">Data de reflexo: </span><span>${item.data_refelexo}</span></div>
         <div class="hora"><span style="font-weight:600">Hora: </span><span>${item.hora}</span></div>
-        <div class="_user"><span style="font-weight:600">Usuário: </span><span>${item.usuario}</span></div>
+        <div class="_user"><span style="font-weight:600">Criado por: </span><span>${item.created_by}</span></div>
         <div><span style="font-weight:600">Estado:</span><span>${item.status == 0 ? 'Pedente': item.status == 0 ? 'Aprovado' : 'Rejeitado'}</span></div>
         <div style="color:#ddd">____________________________</div>
     `
@@ -1452,7 +1840,16 @@ function add_l(new_data){
 }
 
  
-  let ldata=new_data ? new_data : data.lancamentos
+let ldata=new_data ? new_data.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id))) : data.lancamentos.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id)))
+
+
+if(document.querySelector('.payment .table_options span.active').getAttribute('o') != "all"){
+
+  ldata=ldata.filter(l=>l.status==document.querySelector('.payment .table_options span.active').getAttribute('o'))
+
+}
+ 
+  
 
   const l_container=document.querySelector('.payment ._table_container')
 
@@ -1469,7 +1866,8 @@ function add_l(new_data){
       <div class="_total"><span>D. lançamento</span></div>
       <div class="_time"><span>D. reflexo</span></div>
       <div class="hora"><span>Hora</span></div>
-      <div class="_user"><span>Usuário</span></div>
+      <div class="_changer"><span>Alterado por</span></div>
+      <div class="_user"><span>Criado por</span></div>
       <div></div>
     </div>
    `
@@ -1478,11 +1876,14 @@ function add_l(new_data){
 
   for (let i = 0; i < ldata.length; i++) {
 
+    
+
      const item=ldata[i]
      
       l_container.innerHTML+=`
       
-        <div class="item secondary" _id="${item.id}">
+        <div class="item secondary ${item.status=='sending' || item.status=='editing' || item.status=='approving' || item.status=='rejecting' || item.status=='deleting' ? 'not_sent' : ''} ${item.status=='deleted' ? 'does_not_exist' : ''}"  _id="${item.id}">
+          <div class="loader"></div>
           <div class="bg" onclick="l_edit('${item.id}','${item.conta_deb}','${item.conta_cred}','${item.valor_deb}','${item.valor_cred}','${item.descricao}','${item.data_refelexo}','${item.natureza}','${item.status}')"></div>
           <div class="select"><input type="checkbox" onclick="check_and_uncheck_payment_f(this)"/></div>
           <div class="conta"><span>${item.num}</span></div>
@@ -1490,12 +1891,26 @@ function add_l(new_data){
           <div class="valor"><span>${item.deb_full_value}</span></div>
           <div class="conta"><span>${item.conta_deb}</span></div>
           <div class="valor"><span>${item.cred_full_value}</span></div>
-          <div class="status ${item.status == 0 ? 'orange': item.status == 1 ? 'green' : 'red'}"><span>${item.status == 0 ? 'Pendente': item.status == 1 ? 'Aprovado' : 'Rejeitado'}</span></div>
+          <div class="status ${item.status == 'sending' ? 'sending' : item.status == 'pending' ? 'pending': item.status == 'deleting' ? 'deleting' : item.status == 'rejected' ? 'rejected' : item.status == 'approved' ? 'approved' : item.status == 'deleted' ? 'deleted' : item.status == 'editing' ? 'editing' : item.status == 'rejecting' ? 'rejecting' : item.status == 'approving' ? 'approving' : ''}"><span>${item.status == 'sending' ? 'A enviar...' : item.status == 'pending' ? 'Pendente': item.status == 'deleting' ? 'A deletar...' : item.status == 'rejected' ? 'Rejeitado' : item.status == 'approved' ? 'Aprovado' : item.status == 'deleted' ? 'Deletado' : item.status == 'editing' ? 'A editar...' : item.status == 'rejecting' ? 'A rejeitar...' : item.status == 'approving' ? 'A aprovar' : ''}</span></div>
           <div class="desc"><span>${item.descricao.length < 13 ? item.descricao: item.descricao.slice(0,13)+"..." }</span></div>
           <div class="d_l"><span>${item.data_lancamento}</span></div>
           <div class="_time"><span>${item.data_refelexo}</span></div>
           <div class="hora"><span>${item.hora}</span></div>
-          <div class="_user"><span>${item.usuario}</span></div>
+          <div class="_changer">
+            <span>
+               <label class="times">[${data.history.filter(h=>h.l_id==item.id).length}]</label>
+               <label class="by_me" onclick="see_history_filter('${item.id}','${data.history.filter(h=>h.l_id==item.id).length}')">
+                 ${data.history.filter(h=>h.l_id==item.id)[0].user_id==SESSION.code ? '(Você)': data.history.filter(h=>h.l_id==item.id)[0].user}
+              </label>
+              <label onclick="see_history_filter('${item.id}','${data.history.filter(h=>h.l_id==item.id && h.user_id==SESSION.code).length ? data.history.filter(h=>h.l_id==item.id && h.user_id==SESSION.code)[0].change :'1'}')">
+                 ${data.history.filter(h=>h.l_id==item.id)[0].user_id!=SESSION.code && item.changed_by.includes(SESSION.code) ? ', (Você)':''}
+              </label>
+              <label onclick="see_history_filter('${item.id}','1')">
+                ${data.history.filter(h=>h.l_id==item.id)[0].user_id==SESSION.code && item.changed_by.length >= 2 ? ', +'+(item.changed_by.length - 1) : item.changed_by.includes(SESSION.code) && item.changed_by.length >= 3 ? ', +'+(item.changed_by.length - 2): !item.changed_by.includes(SESSION.code) &&  item.changed_by.length >=2  ? ', +'+(item.changed_by.length - 1) : ''}
+              </label>
+            </span>
+          </div>
+          <div class="_user"><span class="${item.user_id == SESSION.code ? 'by_me' : ''}">${item.user_id == SESSION.code ? '(Você)' : item.created_by}</span></div>
           
           <div></div>
       </div>
@@ -1512,15 +1927,19 @@ function add_l(new_data){
 
   //add count
   document.querySelector('.payment .item_count span').innerHTML=ldata.length
+
+  //add count status count
+  
+  document.querySelectorAll('.payment .table_options span').forEach(e=>{
+         let all_available_l=data.lancamentos.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id))).length ? data.lancamentos.filter(l=>(l.status=="deleted" && deleted_files.includes(l.id)) || (l.status!="deleted" && !deleted_files.includes(l.id))).length : "0"
+         e.children[1].innerHTML=`(${e.getAttribute('o')=="all" ? all_available_l : data.lancamentos.filter(l=>l.status==e.getAttribute('o')).length})`
+  })
  
 
   
-add_activities()
+  add_activities()
 
 }
-add_l()
-update_painel_l()
-
 
 
 function add_balanco(new_data){
@@ -1685,14 +2104,14 @@ l_container5.innerHTML=title_bar5
 
 }
 
-add_balanco()
+
 
 function update_painel_l(){
          let ldata=data.lancamentos
         //add total
         let l_total=0
         for (let i = 0; i < ldata.length; i++) {
-          l_total+=ldata[i].valor_cred+ldata[i].valor_deb
+            if(ldata[i].status=="approved") l_total+=ldata[i].valor_cred+ldata[i].valor_deb
         }
         document.querySelector('.payment .total').innerHTML=l_total+".00MT"
         document.querySelector('.payment_print_preview .total').innerHTML=l_total+".00MT"
@@ -1704,7 +2123,7 @@ function update_painel_l(){
         //add debit
         let l_debit=0
         for (let i = 0; i < ldata.length; i++) {
-           l_debit+=ldata[i].valor_deb
+          if(ldata[i].status=="approved")   l_debit+=ldata[i].valor_deb
         }
         document.querySelector('.payment .debito').innerHTML=l_debit+".00MT"
         document.querySelector('.payment_print_preview .d_t').innerHTML=l_debit+".00MT"
@@ -1714,7 +2133,7 @@ function update_painel_l(){
         //add credit
         let l_credit=0
         for (let i = 0; i < ldata.length; i++) {
-          l_credit+=ldata[i].valor_cred
+          if(ldata[i].status=="approved")  l_credit+=ldata[i].valor_cred
         }
         document.querySelector('.payment .credito').innerHTML=l_credit+".00MT"
         document.querySelector('.payment_print_preview .c_t').innerHTML=l_credit+".00MT"
@@ -1730,7 +2149,7 @@ function update_painel_l(){
         document.querySelector('.payment_print_preview .c_p').innerHTML=document.querySelector('.payment .credito-percentage').innerHTML
         document.querySelector('.payment_print_preview .d_p').innerHTML=document.querySelector('.payment .debito-percentage').innerHTML
 
-        if(l_total == 0){
+    /*    if(l_total == 0){
           document.querySelector('.payment .debito-percentage').classList.add('black')
           document.querySelector('.payment_print_preview .d_p').style.color="royalblue"
         }else if(l_debit_p >= 50){
@@ -1754,7 +2173,7 @@ function update_painel_l(){
           document.querySelector('.payment .credito-percentage').classList.add('red')
           document.querySelector('.payment .credito-percentage').classList.remove('black')
           document.querySelector('.payment_print_preview .c_p').style.color="red"
-        }
+        }*/
 }
 
 
@@ -1794,11 +2213,18 @@ function g_edit(id,name){
 
 function activites_action(action,id){
   const index=data.lancamentos.findIndex(l=>l.id==id)
+
+  data.lancamentos[index].status="sending"
+
    if(action=="accept"){
-        data.lancamentos[index].status=1
+        data.lancamentos[index].next_status="approved"
+        data.lancamentos[index].by_admin=true
    }else{
-        data.lancamentos[index].status=2
+        data.lancamentos[index].next_status="rejected"
+        data.lancamentos[index].by_admin=true
    }
+
+   add_to_server({data:data.lancamentos,action:'edit_l',session:SESSION})
 
    add_activities()
    add_l()
@@ -1899,8 +2325,6 @@ function show_popup_f(element,e){
       
       const {id} = e
 
-      console.log(e)
-
       document.querySelectorAll('.pop-ups .payment_p [name]').forEach(element=>{
          element.value=e[element.name]
          
@@ -1913,7 +2337,7 @@ function show_popup_f(element,e){
       document.querySelector(`.pop-ups .payment_p`).classList.add('edit-mode')
       document.querySelector(`.pop-ups .payment_p .delete-btn`).setAttribute('onclick',`delete_single_l('${id}')`)
 
-      if(e.status==2){
+      if(e.status=="rejected" || e.status=="deleted"){
         document.querySelector(`.pop-ups .payment_p`).classList.add('not-editable')   
       }else{
         document.querySelector(`.pop-ups .payment_p`).classList.remove('not-editable')
@@ -2157,7 +2581,7 @@ function show_popup_f(element,e){
         document.querySelector('.pop-ups .groups_and_accounts  .group-div').style.display="flex"
         document.querySelector('.pop-ups .groups_and_accounts .div_number').style.display="flex"
         
-        const id=Math.random().toString().slice(2,8)
+        const id=`${data.accounts.length+1}`  //`temp(${Math.random().toString().slice(2,5)})`
         current_editing_a=[...data.accounts]
         current_editing_a.unshift({
             id,
@@ -2262,7 +2686,7 @@ function show_popup_f(element,e){
    current_editing_a=[...data.accounts]
    current_editing_g=[...data.groups]
 
-   const id=Math.random().toString().slice(2,8)
+   const id=`${data.groups.length+1}` //`temp(${Math.random().toString().slice(2,5)})`
    current_editing_g.unshift({
         id,
         name:'',
@@ -2320,28 +2744,10 @@ function add_payment_f(){
 
 
 
-//initial loading
-let initial_loading_counting_interval
-let initial_loading_counting=0
 
-initial_loading_counting_interval=setInterval(()=>{
-    document.querySelector('.loading_progress').innerHTML=`${initial_loading_counting+=1}%`
-    if(initial_loading_counting == 100){
-        clearInterval(initial_loading_counting_interval)
 
-        setTimeout(()=>{
-          document.querySelector('.init_loader_container').classList.add('end')
-          if(window.innerWidth <= 640){
-                  document.querySelector('.container').classList.add('hide')
-          }
-          setTimeout(()=>{
-              document.querySelector('.init_loader_container').style.display="none"
-          },2000)
-        },500)
 
-        
-    }
-},24);
+
 
 
 
@@ -2518,27 +2924,74 @@ function init(){
 }
 init()
 
+function see_messages(){
+  const msg_container=document.querySelector('.notification_content .chat .messages');
+  setTimeout((e)=>document.querySelector('.notification_content.chat').classList.add('show'),100)
+  //add_to_server({action:'last_seen_message',session:SESSION})
+}
+
 
 
 function send_message(){
   const msg_container=document.querySelector('.notification_content .chat .messages');
   const text=document.querySelector('.notification_content .chat input')
 
-  if(text.value){
-    msg_container.innerHTML+=`
-      <div class="msg_c">
-        <span class="user">Gabriel Macamo</span>
-        <span class="msg">- ${text.value}</span>
-      </div>
-    `
-    text.value=""
-  }
- 
+  if(!text.value.trim()) return
+
+  data.messages.push({id:Math.random(),name:SESSION.name,message:text.value,user_id:SESSION.code})
+
+  text.value=""
+  add_to_server({data:data.messages,action:'add_messages',session:SESSION})
+  msg_container.scrollTo(0,msg_container.scrollHeight)
+  add_messages()
+
 }
+
+
+
+
+
+function add_messages(){
+
+    const msg_container=document.querySelector('.notification_content .chat .messages');
+    msg_container.innerHTML=""
+    for (let i = 0; i < data.messages.length; i++) {
+      msg_container.innerHTML+=`
+      <div class="msg_c">
+        ${data.messages[i].user_id!=SESSION.code ? `<span class="user">${data.messages[i].name}</span>` : ''}
+        <span class="msg ${data.messages[i].user_id==SESSION.code ? 'by_me' : ''}">${data.messages[i].message}</span>
+      </div>
+     `
+    }
+
+
+    if(document.querySelector('.notification_content.chat').classList.contains('show')){
+      //add_to_server({action:'last_seen_message',session:SESSION})
+    }
+
+   
+
+    if(firtTimeToday){
+      msg_container.scrollTo(0,msg_container.scrollHeight)
+    }
+  
+  
+    firtTimeToday=false
+
+
+    
+    const index=data.messages.findIndex(m=>m.id==data.users[0].lastSeenMessage)
+    
+    if(index != -1)  document.querySelector('[page=home] ._center .messages_count').innerHTML=data.messages.length - 1 - index
+    
+
+
+}
+
+
 
 function send_message_oninput(event){
  if(event.keyCode==13) send_message()
-
 }
 
 
@@ -2599,9 +3052,9 @@ function print_l(){
 
 
 
-let xlsx_content=Array(data.lancamentos.length + 2)
+let xlsx_content;
 function download_l_file(file_type){
-
+          xlsx_content=Array(data.lancamentos.length + 2)
           document.querySelector('.pop-ups .chose-download-file-format').classList.remove('show')
 
          xlsx_content[1]=[
@@ -2615,7 +3068,7 @@ function download_l_file(file_type){
           'Descrição',
           'Hora',
           'Natureza de movimento',
-          'Usuário',
+          'Criado por',
           'Estado'
         ]
 
@@ -2638,8 +3091,8 @@ function download_l_file(file_type){
          row.push(data.lancamentos[i]['descricao'])
          row.push(data.lancamentos[i]['hora'])
          row.push(data.lancamentos[i]['natureza'])
-         row.push(data.lancamentos[i]['usuario'])
-         row.push(data.lancamentos[i]['status']== 0 ? 'Pendente' : data.lancamentos[i]['status']== 1 ? 'Aprovado' : 'Rejeitado')
+         row.push(data.lancamentos[i]['created_by'])
+         row.push(data.lancamentos[i]['status']== "pending" ? 'Pendente' : data.lancamentos[i]['status']== "approved" ? 'Aprovado' : data.lancamentos[i]['status']== "rejected" ? 'Rejeitado' :'')
          xlsx_content[i + 2]=row
       
     }
@@ -2685,8 +3138,6 @@ function get_exchange_rate_f(){
   .then(response => response.json())
   .then(responseData => {
         data.exchange_rates=responseData.exchange_rates
-  
-       
   
         document.querySelectorAll('.pop-ups .payment_p select.rate').forEach((e)=>{
                e.setAttribute('current_er',responseData.codes[0])
@@ -2745,6 +3196,7 @@ get_exchange_rate_f()
  }
 
 
+
  document.querySelectorAll('.admin .menu span').forEach(e=>{
     e.addEventListener('click',()=>{
       document.querySelector('.admin ._bottom').scrollLeft=0
@@ -2759,10 +3211,18 @@ get_exchange_rate_f()
       e.classList.add('active')
       document.querySelectorAll('.admin ._bottom > div').forEach(f=>f.style.display="none")
       document.querySelector(`.admin ._bottom > [p='${e.getAttribute('p')}']`).style.display="block"
-
-      
     })
- })
+})
+
+
+document.querySelectorAll('.analysis .menu span').forEach(e=>{
+    e.addEventListener('click',()=>{
+      document.querySelectorAll('.analysis .menu span').forEach(f=>f.classList.remove('active'))
+      e.classList.add('active')
+      document.querySelectorAll('.analysis ._bottom').forEach(f=>f.style.display="none")
+      document.querySelector(`.analysis [p='${e.getAttribute('pag')}']`).style.display="block"
+    })
+})
 
 
 
@@ -2822,38 +3282,51 @@ payment_accounts.forEach(e=>{
 })
 
 function filter_payment_a(e,input){
-       const user=data.users.filter(u=>u.id=="1")[0]
-       let a_access=[]
-       for (let i = 0; i < user.group_access.length; i++) {
-          let group=data.groups.filter(g=>g.id==user.group_access[i])[0]
-          for (let f = 0; f < data.accounts.length; f++) {
-            if(group.to.includes(data.accounts[f].id) && !a_access.includes(data.accounts[f].id)) {
-                 a_access.push(data.accounts[f].id)
-            }
-          }    
-       }
 
-      
+      if(SESSION.type=="admin"){
+        const filter=data.accounts.filter(a=>a.name.toLowerCase().toLowerCase().includes(input)  || a.number.toLowerCase().toLowerCase().includes(input))
+        e.innerHTML=""
+        if(!filter.length) e.innerHTML+=`<span class="no_result">Nenhum resultado encontrado</span>`
+        for (let i = 0; i < filter.length; i++) {
+          e.innerHTML+=`<span onclick="user_chose_account('${e.previousElementSibling.name}','${filter[i].number}')">${filter[i].number} (${filter[i].name})</span>`
+        }
+      }else{
+              const user=data.users[0]
+              let a_access=[]
+              for (let i = 0; i < user.group_access.length; i++) {
+                  let group=data.groups.filter(g=>g.id==user.group_access[i])[0]
+                  for (let f = 0; f < data.accounts.length; f++) {
+                    if(group.to.includes(data.accounts[f].id) && !a_access.includes(data.accounts[f].id)) {
+                        a_access.push(data.accounts[f].id)
+                    }
+                  }    
+              }
 
-       let accounts=data.accounts.filter(a=>user.account_access.includes(a.id))
+              
 
-       for (let f = 0; f < a_access.length; f++) {
-           if(!accounts.filter(a=>a.id==a_access[f]).length) {
-               accounts.push(data.accounts.filter(a=>a.id==a_access[f])[0])
-           }
-       }
+              let accounts=data.accounts.filter(a=>user.account_access.includes(a.id))
+
+              for (let f = 0; f < a_access.length; f++) {
+                  if(!accounts.filter(a=>a.id==a_access[f]).length) {
+                      accounts.push(data.accounts.filter(a=>a.id==a_access[f])[0])
+                  }
+              }
+              
+              const filter=accounts.filter(a=>a.name.toLowerCase().toLowerCase().includes(input)  || a.number.toLowerCase().toLowerCase().includes(input))
+              e.innerHTML=""
+              if(!filter.length) e.innerHTML+=`<span class="no_result">Nenhum resultado encontrado</span>`
+
+              acccount_filter=filter
+
+              for (let i = 0; i < filter.length; i++) {
+                  e.innerHTML+=`<span onclick="user_chose_account('${e.previousElementSibling.name}','${filter[i].number}')">${filter[i].number} (${filter[i].name})</span>`
+              }
+
+              check_user_chosen_a_validation(`${e.previousElementSibling.name}`,'only-if-is-valid')
+
+      }
+
        
-       const filter=accounts.filter(a=>a.name.toLowerCase().toLowerCase().includes(input)  || a.number.toLowerCase().toLowerCase().includes(input))
-       e.innerHTML=""
-       if(!filter.length) e.innerHTML+=`<span class="no_result">Nenhum resultado encontrado</span>`
-
-       acccount_filter=filter
-
-       for (let i = 0; i < filter.length; i++) {
-           e.innerHTML+=`<span onclick="user_chose_account('${e.previousElementSibling.name}','${filter[i].number}')">${filter[i].number} (${filter[i].name})</span>`
-       }
-
-       check_user_chosen_a_validation(`${e.previousElementSibling.name}`,'only-if-is-valid')
 
        
 }
@@ -2875,7 +3348,6 @@ function change_company_logo(input){
   })
   reader.readAsDataURL(f)
 
-  console.log(input.files)
 }
 
 
@@ -2896,5 +3368,12 @@ function Clipboard(text){
 function copyTechInfo(text){
   Clipboard(text)
   setTimeout(()=>document.querySelector('.pop-ups .tech-info').classList.remove('show'),100)
+}
+
+
+
+function logout(){
+   window.location.href='index.html'
+   localStorage.removeItem('ars-data')
 }
 
